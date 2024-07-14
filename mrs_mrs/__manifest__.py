@@ -13,7 +13,8 @@
     "support": "lwinmaungmaung@cosmosmm.com",
     "depends": [
         "base",
-        "product"
+        "product",
+        "mrs_patient"
     ],
     "demo": [],
     "data": [
