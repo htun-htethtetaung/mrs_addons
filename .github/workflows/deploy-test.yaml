@@ -35,4 +35,4 @@ jobs:
       run: cp -r * /mnt/extra-addons/.
     - name: Test Deploy
       working-directory: /home/odoo/17.0
-      run: runuser -u ${ODOO_USER:-odoo} -- ./odoo-bin --db_host=postgres --db_user=admin --db_password=admin --database=odoo -i ${MODULES:-base} --stop-after-init
+      run: runuser -u ${ODOO_USER:-odoo} -- ./odoo-bin --db_host=postgres --db_user=admin --db_password=admin --database=odoo -i ${MODULES:-base,product,web_gantt,resource,appointment,mrs_patient,mrs_mrs} --stop-after-init
