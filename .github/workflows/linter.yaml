@@ -13,10 +13,14 @@ jobs:
 
   lint:
     runs-on: ubuntu-latest
-    container: lwinmgmg/odoo:17.0
+    container:
+        image: lwinmgmg/odoo:17.0
+        options: --user root
     steps:
     - name: Code Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+    - name: Changing PATH
+      run: export PATH=${ODOO_USER_HOME_DIR}/.venv/bin:${PATH}
     - name: Installation
       run: pip install -r requirements-dev.txt
     - name: Pylint Linter
