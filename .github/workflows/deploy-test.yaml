@@ -4,16 +4,15 @@
 name: Deploy Test(Python)
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Linter(Python)"]
     branches: [ "*" ]
-  pull_request:
-    branches: [ "master" ]
+    types: 
+      - completed
 
 jobs:
 
   deploy_test:
-    needs:
-      - lint
     runs-on: ubuntu-latest
     container:
       image: lwinmgmg/odoo:17.0
