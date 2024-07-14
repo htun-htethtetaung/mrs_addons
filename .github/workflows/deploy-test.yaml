@@ -12,7 +12,7 @@ on:
 
 jobs:
 
-  deploy_test:gi
+  deploy_test:
     runs-on: ubuntu-latest
     container:
       image: lwinmgmg/odoo:17.0
