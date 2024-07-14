@@ -10,7 +10,7 @@ class ResourceCalendar(models.Model):
     _populate_sizes = {
         "small": 10,  # 1-2 per company
         "medium": 30,  # 3 per company
-        "large": 250  # 5 per company
+        "large": 250,  # 5 per company
     }
 
     def _populate_factories(self):
@@ -23,21 +23,27 @@ class ResourceCalendar(models.Model):
 
     def _populate(self, size):
         records = super()._populate(size)
-        random = populate.Random('calendar')
+        random = populate.Random("calendar")
 
         # Randomly remove 1 half day from schedule
         a_lot = records.filtered_domain([("name", "like", "A lot")])
         for record in a_lot:
             att_id = record.attendance_ids[random.randint(0, 9)]
-            record.write({
-                'attendance_ids': [(3, att_id.id)],
-            })
+            record.write(
+                {
+                    "attendance_ids": [(3, att_id.id)],
+                }
+            )
 
         # Randomly remove 3 to 5 half days from schedule
         a_little = records - a_lot
         for record in a_little:
             to_pop = random.sample(range(10), random.randint(3, 5))
-            record.write({
-                'attendance_ids': [(3, record.attendance_ids[idx].id) for idx in to_pop],
-            })
+            record.write(
+                {
+                    "attendance_ids": [
+                        (3, record.attendance_ids[idx].id) for idx in to_pop
+                    ],
+                }
+            )
         return records

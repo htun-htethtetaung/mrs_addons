@@ -9,7 +9,10 @@
                     <group>
                         <group>
                             <field name="patient_id" />
-                            <field name="doctor_id" />
+                            <field name="is_external_doctor" />
+                            <field name="doctor_id" invisible="is_external_doctor" required="not is_external_doctor" />
+                            <field name="external_doctor_name" invisible="not is_external_doctor" />
+                            <field name="mrs_location_id" />
                         </group>
                         <group>
                             <field name="start_date" />
@@ -18,16 +21,33 @@
                     </group>
                     <notebook >
                         <page id="mrs_prescription_lines" string="Prescription">
-                            <field name="prescription_order_ids"
-                                widget="section_and_note_one2many"
-                                mode="tree">
-                                <tree>
-                                    <field name="product_id" />
-                                    <field name="quantity" />
-                                    <field name="uom_id" />
-                                    <field name="dose_free_text" />
-                                </tree>
-                            </field>
+                            <group>
+                                <field name="prescription_order_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <tree>
+                                        <field name="product_id" />
+                                        <field name="quantity" />
+                                        <field name="uom_id" />
+                                        <field name="dose_free_text" />
+                                        <field name="frequency_qty" />
+                                        <button name="unknown" string="Per" disabled="1"/>
+                                        <field name="frequency_uom_id" />
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="prescription_lab_ids"
+                                    widget="section_and_note_one2many"
+                                    mode="tree">
+                                    <tree>
+                                        <field name="laboratory_id" />
+                                        <field name="lab_ref_no" />
+                                        <field name="priority" />
+                                        <field name="instruction" />
+                                    </tree>
+                                </field>
+                            </group>
                         </page>
                     </notebook>
                 </sheet>

@@ -3,6 +3,7 @@
 
 from odoo.addons.resource.models.utils import Intervals, timezone_datetime
 
+
 def intervals_overlap(interval_a, interval_b):
     """Check whether an interval of time intersects another.
 
@@ -14,6 +15,7 @@ def intervals_overlap(interval_a, interval_b):
     start_b, stop_b = tuple(timezone_datetime(i) for i in interval_b)
     return start_a != stop_a and start_a < stop_b and stop_a > start_b
 
+
 def interval_from_events(event_ids):
     """Group events with contiguous and/or overlapping time slots.
 
@@ -22,6 +24,7 @@ def interval_from_events(event_ids):
     :return Intervals|Iterable[tuple[datetime, datetime, <calendar.event>]]:
     """
     return Intervals([(event.start, event.stop, event) for event in event_ids])
+
 
 def invert_intervals(intervals, first_start, last_stop):
     """Return the intervals between the intervals that were passed in.
@@ -43,4 +46,7 @@ def invert_intervals(intervals, first_start, last_stop):
     if last_stop and prev_stop < last_stop:
         items.append((prev_stop, last_stop))
     # abuse Intervals to merge contiguous intervals
-    return [(start, stop) for start, stop, _ in Intervals([(start, stop, set()) for start, stop in items])]
+    return [
+        (start, stop)
+        for start, stop, _ in Intervals([(start, stop, set()) for start, stop in items])
+    ]

@@ -16,9 +16,9 @@ class PrescriptionOrder(models.Model):
     uom_id = fields.Many2one(comodel_name="uom.uom", string="Dose Unit")
 
     # Dose Frequency
-    frequency_qty = fields.Float()
-    frequency_uom_id = fields.Many2one(comodel_name="uom.uom")
-    
+    frequency_qty = fields.Float(string="Frequency (Times)")
+    frequency_uom_id = fields.Many2one(comodel_name="uom.uom", string="Frequency Unit")
+
     # Dose Duration
     start_date = fields.Datetime()
     duration = fields.Float()
@@ -26,11 +26,15 @@ class PrescriptionOrder(models.Model):
 
     # Notes
     note = fields.Text()
-    is_reason_needed = fields.Boolean()
-    reason = fields.Text()
+    is_prn = fields.Boolean("Take as needed")
+    prn_reason = fields.Text("P.R.N. Reason")
 
     # Dispensing
     dispensing_instruction = fields.Text()
+    dispense_qty = fields.Float(string="Quantity to dispense")
+    dispense_uom_id = fields.Many2one(comodel_name="uom.uom", string="Quantity unit")
+    prescription_refills = fields.Float()
+
 
 class Laboratory(models.Model):
     _name = "mrs.lab"
@@ -40,6 +44,7 @@ class Laboratory(models.Model):
     name = fields.Char(index=True)
     code = fields.Char()
 
+
 class LabPriority(Enum):
     ROUTINE = "ROUTINE"
     STAT = "STAT"
@@ -48,6 +53,7 @@ class LabPriority(Enum):
     def name_value(cls):
         for item in cls:
             yield (item.name, item.value)
+
 
 class PrescriptionLab(models.Model):
     _name = "mrs.prescription.lab"

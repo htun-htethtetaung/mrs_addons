@@ -19,8 +19,8 @@ ROUNDING_FACTOR = 16
 
 
 def make_aware(dt):
-    """ Return ``dt`` with an explicit timezone, together with a function to
-        convert a datetime to the same (naive or aware) timezone as ``dt``.
+    """Return ``dt`` with an explicit timezone, together with a function to
+    convert a datetime to the same (naive or aware) timezone as ``dt``.
     """
     if dt.tzinfo:
         return dt, lambda val: val.astimezone(dt.tzinfo)
@@ -28,17 +28,17 @@ def make_aware(dt):
 
 
 def string_to_datetime(value):
-    """ Convert the given string value to a datetime in UTC. """
+    """Convert the given string value to a datetime in UTC."""
     return utc.localize(fields.Datetime.from_string(value))
 
 
 def datetime_to_string(dt):
-    """ Convert the given datetime (converted in UTC) to a string value. """
+    """Convert the given datetime (converted in UTC) to a string value."""
     return fields.Datetime.to_string(dt.astimezone(utc))
 
 
 def float_to_time(hours):
-    """ Convert a number of hours into a time object. """
+    """Convert a number of hours into a time object."""
     if hours == 24.0:
         return time.max
     fractional, integral = math.modf(hours)
@@ -46,11 +46,12 @@ def float_to_time(hours):
 
 
 def _boundaries(intervals, opening, closing):
-    """ Iterate on the boundaries of intervals. """
+    """Iterate on the boundaries of intervals."""
     for start, stop, recs in intervals:
         if start < stop:
             yield (start, opening, recs)
             yield (stop, closing, recs)
+
 
 def filter_domain_leaf(domain, field_check, field_name_mapping=None):
     """
@@ -73,15 +74,21 @@ def filter_domain_leaf(domain, field_check, field_name_mapping=None):
     domain = normalize_domain(domain)
     field_name_mapping = field_name_mapping or {}
 
-    stack = [] # stack of elements (leaf or operator) to conserve (reversing it gives a domain)
-    ignored_elems = [] # history of ignored elements in the domain (not added to the stack)
+    stack = (
+        []
+    )  # stack of elements (leaf or operator) to conserve (reversing it gives a domain)
+    ignored_elems = (
+        []
+    )  # history of ignored elements in the domain (not added to the stack)
     # if the top of the stack ignored_elems is:
     # - True: indicates that the last browsed elem has been ignored
     # - False: indicates that the last browsed elem has been added to the stack
     # When an operator is applied to some elements, they are removed from the ignored_elems stack
     # (and replaced by the ignored_elems flag of the operator)
     while domain:
-        next_elem = domain.pop() # Browsing the domain backward simplifies the filtering
+        next_elem = (
+            domain.pop()
+        )  # Browsing the domain backward simplifies the filtering
         if is_leaf(next_elem):
             field_name, op, value = next_elem
             if field_check(field_name):
@@ -97,7 +104,7 @@ def filter_domain_leaf(domain, field_check, field_name_mapping=None):
                 ignored_elems.append(False)
             else:
                 ignored_elems.append(True)
-        else: # OR/AND operation
+        else:  # OR/AND operation
             ignore_operand1 = ignored_elems.pop()
             ignore_operand2 = ignored_elems.pop()
             if not ignore_operand1 and not ignore_operand2:
@@ -106,14 +113,18 @@ def filter_domain_leaf(domain, field_check, field_name_mapping=None):
             elif ignore_operand1 and ignore_operand2:
                 ignored_elems.append(True)
             else:
-                ignored_elems.append(False) # the AND/OR operation is replaced by one of its operand which cannot be ignored
+                ignored_elems.append(
+                    False
+                )  # the AND/OR operation is replaced by one of its operand which cannot be ignored
     return list(reversed(stack))
 
+
 class Intervals(object):
-    """ Collection of ordered disjoint intervals with some associated records.
-        Each interval is a triple ``(start, stop, records)``, where ``records``
-        is a recordset.
+    """Collection of ordered disjoint intervals with some associated records.
+    Each interval is a triple ``(start, stop, records)``, where ``records``
+    is a recordset.
     """
+
     def __init__(self, intervals=()):
         self._items = []
         if intervals:
@@ -121,8 +132,8 @@ class Intervals(object):
             append = self._items.append
             starts = []
             recses = []
-            for value, flag, recs in sorted(_boundaries(intervals, 'start', 'stop')):
-                if flag == 'start':
+            for value, flag, recs in sorted(_boundaries(intervals, "start", "stop")):
+                if flag == "start":
                     starts.append(value)
                     recses.append(recs)
                 else:
@@ -144,34 +155,34 @@ class Intervals(object):
         return reversed(self._items)
 
     def __or__(self, other):
-        """ Return the union of two sets of intervals. """
+        """Return the union of two sets of intervals."""
         return Intervals(chain(self._items, other._items))
 
     def __and__(self, other):
-        """ Return the intersection of two sets of intervals. """
+        """Return the intersection of two sets of intervals."""
         return self._merge(other, False)
 
     def __sub__(self, other):
-        """ Return the difference of two sets of intervals. """
+        """Return the difference of two sets of intervals."""
         return self._merge(other, True)
 
     def _merge(self, other, difference):
-        """ Return the difference or intersection of two sets of intervals. """
+        """Return the difference or intersection of two sets of intervals."""
         result = Intervals()
         append = result._items.append
 
         # using 'self' and 'other' below forces normalization
-        bounds1 = _boundaries(self, 'start', 'stop')
-        bounds2 = _boundaries(other, 'switch', 'switch')
+        bounds1 = _boundaries(self, "start", "stop")
+        bounds2 = _boundaries(other, "switch", "switch")
 
-        start = None                    # set by start/stop
-        recs1 = None                    # set by start
-        enabled = difference            # changed by switch
+        start = None  # set by start/stop
+        recs1 = None  # set by start
+        enabled = difference  # changed by switch
         for value, flag, recs in sorted(chain(bounds1, bounds2)):
-            if flag == 'start':
+            if flag == "start":
                 start = value
                 recs1 = recs
-            elif flag == 'stop':
+            elif flag == "stop":
                 if enabled and start < value:
                     append((start, value, recs1))
                 start = None
@@ -184,12 +195,11 @@ class Intervals(object):
 
         return result
 
+
 def sum_intervals(intervals):
-    """ Sum the intervals duration (unit : hour)"""
-    return sum(
-        (stop - start).total_seconds() / 3600
-        for start, stop, meta in intervals
-    )
+    """Sum the intervals duration (unit : hour)"""
+    return sum((stop - start).total_seconds() / 3600 for start, stop, meta in intervals)
+
 
 def timezone_datetime(time):
     if not time.tzinfo:

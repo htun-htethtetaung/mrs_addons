@@ -5,9 +5,9 @@ from odoo import api, models
 
 
 class Onboarding(models.Model):
-    _inherit = 'onboarding.onboarding'
+    _inherit = "onboarding.onboarding"
 
     # Appointment Onboarding
     @api.model
     def action_close_panel_appointment(self):
-        self.action_close_panel('appointment.onboarding_onboarding_appointment')
+        self.action_close_panel("appointment.onboarding_onboarding_appointment")

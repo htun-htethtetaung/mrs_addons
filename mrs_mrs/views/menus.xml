@@ -3,5 +3,8 @@
     <menuitem name="MRS" id="mrs_mrs_module_main_menu">
         <menuitem name="Medical History" id="mrs_visit_sub_menu" action="mrs_visit_action">
         </menuitem>
+        <menuitem name="Configurations" id="mrs_configuration_sub_menu">
+            <menuitem name="MRS Locations" id="mrs_location_sub_menu" action="mrs_location_action"></menuitem>
+        </menuitem>
     </menuitem>
 </odoo>

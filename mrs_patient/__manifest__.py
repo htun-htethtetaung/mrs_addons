@@ -15,8 +15,7 @@
         "base",
     ],
     "demo": [],
-    "data": [
-    ],
+    "data": [],
     "application": True,
     "installable": True,
 }

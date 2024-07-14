@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!-- PRESCRIPTION ORDER START -->
     <record id="view_mrs_prescription_order_form" model="ir.ui.view">
         <field name="name">Prescription Order</field>
         <field name="model">mrs.prescription.order</field>
@@ -14,10 +15,36 @@
                             <field name="is_dose_free_text" />
                             <field name="quantity" invisible="is_dose_free_text" />
                             <field name="uom_id" invisible="is_dose_free_text" />
-                            <field name="dose_free_text" invisible="not is_dose_free_text"/>
+                            <field name="dose_free_text" invisible="not is_dose_free_text" required="is_dose_free_text"/>
+                            <div class="o_td_label" >
+                                <label for="frequency_qty" string="Frequency"/>
+                            </div>
+                            <div class="d-flex" >
+                                <field name="frequency_qty" />
+                                <span class="o_form_label font-bold">per</span>
+                                <field name="frequency_uom_id" placeholder="eg. Day" />
+                            </div>
+                            <field name="note" placeholder="eg. Eat before taking medicine"/>
                         </group>
-                        <group>
-
+                        <group string="Dispensing Instructions">
+                            <field name="dispense_qty" />
+                            <field name="dispense_uom_id" />
+                            <field name="prescription_refills" />
+                            <field name="dispensing_instruction" placeholder="eg. Note for dispensing" />
+                        </group>
+                        <group string="Prescription Duration">
+                            <field name="start_date" />
+                            <div class="o_td_label" >
+                                <label for="duration" string="Frequency"/>
+                            </div>
+                            <div class="d-flex" >
+                                <field name="duration" />
+                                <field name="duration_uom_id" placeholder="eg. Days" />
+                            </div>
+                        </group>
+                        <group string="P.R.N.">
+                            <field name="is_prn" />
+                            <field name="prn_reason" required="is_prn" placeholder="Why is it needed to take?" invisible="not is_prn" />
                         </group>
                     </group>
                 </sheet>
@@ -45,4 +72,53 @@
             </p>
         </field>
     </record>
+<!-- PRESCRIPTION ORDER END -->
+
+<!-- PRESCRIPTION LAB START -->
+    <record id="view_mrs_prescription_lab_form" model="ir.ui.view">
+        <field name="name">Prescription Lab</field>
+        <field name="model">mrs.prescription.lab</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group string="Instructions">
+                            <field name="laboratory_id" />
+                            <field name="lab_ref_no" />
+
+                        </group>
+                        <group string="Prescription Duration">
+                            <field name="priority" />
+                            <field name="instruction" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_prescription_lab_list" model="ir.ui.view">
+        <field name="name">Prescription Lab</field>
+        <field name="model">mrs.prescription.lab</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="laboratory_id" />
+                <field name="lab_ref_no" />
+                <field name="priority" />
+                <field name="instruction" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_prescripiton_lab_action" model="ir.actions.act_window">
+        <field name="name">Prescription Lab</field>
+        <field name="res_model">mrs.prescription.lab</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Prescripiton Lab
+            </p><p>
+            Create car
+            </p>
+        </field>
+    </record>
+<!-- PRESCRIPTION LAB END -->
 </odoo>
