@@ -5,7 +5,7 @@ name: Deploy Test(Python)
 
 on:
   workflow_run:
-    workflows: [linter]
+    workflows: [lint]
     types:
     - completed
 
