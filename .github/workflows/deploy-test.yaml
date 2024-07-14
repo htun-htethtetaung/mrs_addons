@@ -31,6 +31,8 @@ jobs:
       run: export PATH=${ODOO_USER_HOME_DIR}/.venv/bin:${PATH}
     - name: Installation
       run: pip install -r requirements-dev.txt
+    - name: Postgres Init
+      run: PGPASSWORD=admin psql -h postgres -U admin -w -c 'CREATE EXTENSION pg_trgm;'
     - name: Copy Codes
       run: cp -r * /mnt/extra-addons/.
     - name: Test Deploy
