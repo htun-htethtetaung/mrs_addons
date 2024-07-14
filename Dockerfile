@@ -8,4 +8,4 @@ COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
 
-RUN [ "odoo" ]
+CMD [ "odoo" ]
