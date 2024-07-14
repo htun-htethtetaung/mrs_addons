@@ -12,7 +12,7 @@ on:
 
 jobs:
 
-  deploy_test:
+  deploy_test:gi
     runs-on: ubuntu-latest
     container:
       image: lwinmgmg/odoo:17.0
@@ -25,5 +25,5 @@ jobs:
     - name: Installation
       run: pip install -r requirements-dev.txt
     - name: Test Deploy
-      working-directory: $ODOO_INSTALL_DIR
+      working-directory: /home/odoo/17.0
       run: echo $(pwd)
