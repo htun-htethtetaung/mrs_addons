@@ -1,0 +1,29 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Deploy Test(Python)
+
+on:
+  workflow_run:
+    workflows: [linter]
+    types:
+    - completed
+
+jobs:
+
+  deploy_test:
+    runs-on: ubuntu-latest
+    container:
+      image: lwinmgmg/odoo:17.0
+      options: --user root
+    steps:
+    - name: Code Checkout
+      uses: actions/checkout@v4
+    - name: Changing PATH
+      run: export PATH=${ODOO_USER_HOME_DIR}/.venv/bin:${PATH}
+    - name: Installation
+      run: pip install -r requirements-dev.txt
+    - name: Change Directory
+      run: cd $ODOO_INSTALL_DIR
+    - name: Test Deploy
+      run: echo $(pwd)
