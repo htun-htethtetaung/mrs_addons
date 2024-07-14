@@ -8,14 +8,12 @@ on:
     branches: [ "*" ]
   pull_request:
     branches: [ "master" ]
-  workflow_run:
-    workflows: [lint]
-    types:
-    - completed
 
 jobs:
 
   deploy_test:
+    needs:
+      - lint
     runs-on: ubuntu-latest
     container:
       image: lwinmgmg/odoo:17.0
@@ -27,7 +25,6 @@ jobs:
       run: export PATH=${ODOO_USER_HOME_DIR}/.venv/bin:${PATH}
     - name: Installation
       run: pip install -r requirements-dev.txt
-    - name: Change Directory
-      run: cd $ODOO_INSTALL_DIR
     - name: Test Deploy
+      working-directory: $ODOO_INSTALL_DIR
       run: echo $(pwd)
