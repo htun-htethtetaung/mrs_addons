@@ -14,6 +14,13 @@ jobs:
 
   deploy_test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: "admin"
+          POSTGRES_PASSWORD: "admin"
+          POSTGRES_DB: "odoo"
     container:
       image: lwinmgmg/odoo:17.0
       options: --user root
@@ -26,4 +33,4 @@ jobs:
       run: pip install -r requirements-dev.txt
     - name: Test Deploy
       working-directory: /home/odoo/17.0
-      run: echo $(pwd)
+      run: ./odoo-bin --db_host=postgres --db_user=admin --db_password=admin --db_name=odoo -i base --stop-after-init
