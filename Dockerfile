@@ -4,6 +4,8 @@ COPY . /mnt/extra-addons/.
 
 RUN pip install -r /mnt/extra-addons/requirements-dev.txt
 
+COPY entrypoint.sh /
+
 ENTRYPOINT ["/entrypoint.sh"]
 
 RUN [ "odoo" ]
