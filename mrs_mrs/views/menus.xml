@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="MRS" id="mrs_mrs_module_main_menu">
+        <menuitem name="Medical History" id="mrs_visit_sub_menu" action="mrs_visit_action">
+        </menuitem>
+    </menuitem>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mrs_mrs.access_mrs_visit,access_mrs_visit,mrs_mrs.model_mrs_visit,base.group_user,1,0,0,0
+mrs_mrs.access_mrs_prescription_order,access_mrs_prescription_order,mrs_mrs.model_mrs_prescription_order,base.group_user,1,0,0,0
+mrs_mrs.access_mrs_lab,access_mrs_lab,mrs_mrs.model_mrs_lab,base.group_user,1,0,0,0
+mrs_mrs.access_mrs_prescription_lab,access_mrs_prescription_lab,mrs_mrs.model_mrs_prescription_lab,base.group_user,1,0,0,0

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_prescription_order_form" model="ir.ui.view">
+        <field name="name">Prescription Order</field>
+        <field name="model">mrs.prescription.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>
+                        <field name="product_id" placeholder="Drug or Medicine" />
+                    </h1>
+                    <group>
+                        <group string="Instructions">
+                            <field name="is_dose_free_text" />
+                            <field name="quantity" invisible="is_dose_free_text" />
+                            <field name="uom_id" invisible="is_dose_free_text" />
+                            <field name="dose_free_text" invisible="not is_dose_free_text"/>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_prescription_order_list" model="ir.ui.view">
+        <field name="name">Prescription Order</field>
+        <field name="model">mrs.prescription.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="product_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_prescripiton_order_action" model="ir.actions.act_window">
+        <field name="name">Prescription Order</field>
+        <field name="res_model">mrs.prescription.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Prescripiton
+            </p><p>
+            Create car
+            </p>
+        </field>
+    </record>
+</odoo>
