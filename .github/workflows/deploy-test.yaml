@@ -32,7 +32,7 @@ jobs:
     - name: Installation
       run: pip install -r requirements-dev.txt
     - name: Postgres Init
-      run: PGPASSWORD=admin psql -h postgres -U admin -w -c 'CREATE EXTENSION pg_trgm;'
+      run: PGPASSWORD=admin psql -h postgres -U admin -d odoo -w -c 'CREATE EXTENSION pg_trgm;'
     - name: Copy Codes
       run: cp -r * /mnt/extra-addons/.
     - name: Test Deploy
