@@ -31,6 +31,8 @@ jobs:
       run: export PATH=${ODOO_USER_HOME_DIR}/.venv/bin:${PATH}
     - name: Installation
       run: pip install -r requirements-dev.txt
+    - name: Copy Codes
+      run: cp -r * /mnt/extra-addons/.
     - name: Test Deploy
       working-directory: /home/odoo/17.0
-      run: ./odoo-bin --db_host=postgres --db_user=admin --db_password=admin --db_name=odoo -i base --stop-after-init
+      run: ./odoo-bin --db-host=postgres --db_user=admin --db_password=admin --database=odoo -i ${MODULES:-base} --stop-after-init
