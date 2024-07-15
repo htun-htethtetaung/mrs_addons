@@ -121,4 +121,40 @@
         </field>
     </record>
 <!-- PRESCRIPTION LAB END -->
+<!-- LAB START -->
+    <record id="view_mrs_lab_form" model="ir.ui.view">
+        <field name="name">Laboaratory</field>
+        <field name="model">mrs.lab</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                    <field name="code"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_lab_list" model="ir.ui.view">
+        <field name="name">Laboaratory</field>
+        <field name="model">mrs.lab</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_lab_action" model="ir.actions.act_window">
+        <field name="name">Laboaratory</field>
+        <field name="res_model">mrs.lab</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Laboaratory
+            </p><p>
+            Create car
+            </p>
+        </field>
+    </record>
+<!-- LAB END -->
 </odoo>

@@ -1,5 +1,17 @@
 from datetime import datetime
+from enum import Enum
 from odoo import fields, models, api
+
+
+class VisitStatus(Enum):
+    DRAFT = "Draft"
+    START = "Started"
+    ENDED = "Ended"
+
+    @classmethod
+    def name_value(cls):
+        for item in cls:
+            yield (item.name, item.value)
 
 
 class Visit(models.Model):
@@ -13,6 +25,11 @@ class Visit(models.Model):
     patient_id = fields.Many2one(comodel_name="res.partner")
     doctor_id = fields.Many2one(
         comodel_name="res.users", default=lambda x: x.env.user.id
+    )
+    state = fields.Selection(
+        selection=list(VisitStatus.name_value()),
+        index=True,
+        default=VisitStatus.DRAFT.name,
     )
     is_external_doctor = fields.Boolean(default=False)
     external_doctor_name = fields.Char(size=30)
@@ -39,3 +56,15 @@ class Visit(models.Model):
         for record in self:
             if record.is_external_doctor:
                 record.doctor_id = None
+
+    def action_start(self):
+        for record in self:
+            record.state = VisitStatus.START.name
+            record.start_date = (
+                record.start_date if record.start_date else datetime.now()
+            )
+
+    def action_end(self):
+        for record in self:
+            record.state = VisitStatus.ENDED.name
+            record.end_date = record.end_date if record.end_date else datetime.now()
