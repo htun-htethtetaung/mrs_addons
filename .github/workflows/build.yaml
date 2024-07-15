@@ -12,6 +12,7 @@ on:
 
 jobs:
   build:
+    if: github.repository_owner == 'lwinmgmg'
     runs-on: ubuntu-latest
     steps:
       -
