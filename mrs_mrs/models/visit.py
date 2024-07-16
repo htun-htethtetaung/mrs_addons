@@ -19,10 +19,10 @@ class Visit(models.Model):
 
     _description = "Visit to patient"
 
-    _inherits = {}
     _inherit = ["mail.thread.main.attachment", "mail.activity.mixin"]
 
-    patient_id = fields.Many2one(comodel_name="res.partner")
+    patient_id = fields.Many2one(comodel_name="res.partner", tracking=True)
+    name = fields.Char(related="patient_id.name")
     doctor_id = fields.Many2one(
         comodel_name="res.users", default=lambda x: x.env.user.id
     )
@@ -30,19 +30,36 @@ class Visit(models.Model):
         selection=list(VisitStatus.name_value()),
         index=True,
         default=VisitStatus.DRAFT.name,
+        tracking=True,
     )
     is_external_doctor = fields.Boolean(default=False)
     external_doctor_name = fields.Char(size=30)
-    start_date = fields.Datetime(default=lambda x: datetime.now(), index=True)
+    start_date = fields.Datetime(
+        default=lambda x: datetime.now(), index=True, tracking=True
+    )
     end_date = fields.Datetime(readonly=True)
     mrs_location_id = fields.Many2one(comodel_name="mrs.location")
 
+    note = fields.Text(tracking=True)
+
     # Prescription
     prescription_order_ids = fields.One2many(
-        comodel_name="mrs.prescription.order", inverse_name="visit_id"
+        comodel_name="mrs.prescription.order", inverse_name="visit_id", tracking=True
     )
     prescription_lab_ids = fields.One2many(
-        comodel_name="mrs.prescription.lab", inverse_name="visit_id"
+        comodel_name="mrs.prescription.lab", inverse_name="visit_id", tracking=True
+    )
+
+    vital_ids = fields.One2many(
+        comodel_name="mrs.vital", inverse_name="visit_id", tracking=True
+    )
+
+    biometric_ids = fields.One2many(
+        comodel_name="mrs.biometric", inverse_name="visit_id", tracking=True
+    )
+
+    condition_ids = fields.One2many(
+        comodel_name="mrs.diagnosis.condition", inverse_name="visit_id"
     )
 
     @api.onchange("doctor_id")

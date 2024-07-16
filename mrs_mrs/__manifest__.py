@@ -18,6 +18,7 @@
         "views/visit_view.xml",
         "views/prescription_view.xml",
         "views/mrs_location_view.xml",
+        "views/diagnosis_view.xml",
         "views/menus.xml",
     ],
     "application": True,

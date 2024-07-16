@@ -8,6 +8,12 @@ class PrescriptionOrder(models.Model):
     _description = "Prescription Order"
 
     visit_id = fields.Many2one(comodel_name="mrs.visit")
+    patient_id = fields.Many2one(
+        comodel_name="res.partner",
+        related="visit_id.patient_id",
+        store=True,
+        index=True,
+    )
     # Related to Dose
     is_dose_free_text = fields.Boolean("Free Text Dose?", default=False)
     dose_free_text = fields.Text()
@@ -61,6 +67,12 @@ class PrescriptionLab(models.Model):
     _description = "Prescription Lab"
 
     visit_id = fields.Many2one(comodel_name="mrs.visit")
+    patient_id = fields.Many2one(
+        comodel_name="res.partner",
+        related="visit_id.patient_id",
+        store=True,
+        index=True,
+    )
     laboratory_id = fields.Many2one(comodel_name="mrs.lab")
     lab_ref_no = fields.Char(index=True)
     priority = fields.Selection(selection=list(LabPriority.name_value()))

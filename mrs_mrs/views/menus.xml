@@ -6,6 +6,7 @@
         <menuitem name="Configurations" id="mrs_configuration_sub_menu">
             <menuitem name="MRS Locations" id="mrs_location_sub_menu" action="mrs_location_action"></menuitem>
             <menuitem name="Laboratory" id="mrs_lab_sub_menu" action="mrs_lab_action"></menuitem>
+            <menuitem name="Diagnosis" id="mrs_diagnosis_sub_menu" action="mrs_diagnosis_action"></menuitem>
         </menuitem>
     </menuitem>
 </odoo>
