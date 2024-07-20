@@ -51,6 +51,7 @@ ignore=
       .vscode,
       .venv,
       appointment,
+      website_appointment,
       resource,
       web_gantt
 

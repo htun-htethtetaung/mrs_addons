@@ -6,7 +6,7 @@ from odoo.http import request
 
 
 class AppointmentSnippets(http.Controller):
-    @http.route('/appointment/get_snippet_data', type='json', auth='user')
+    @http.route("/appointment/get_snippet_data", type="json", auth="user")
     def get_snippet_data(self, appointment_type_id=None):
         """
         :param int appointment_type_id: Optional: Only fetch this appointment type's data
@@ -22,16 +22,27 @@ class AppointmentSnippets(http.Controller):
            ...appointments
           }
         """
-        domain = [('category', 'in', ['punctual', 'recurring']), ('website_published', '=', True), ('staff_user_ids', '!=', False)]
+        domain = [
+            ("category", "in", ["punctual", "recurring"]),
+            ("website_published", "=", True),
+            ("staff_user_ids", "!=", False),
+        ]
         if appointment_type_id:
-            appointment_types = request.env["appointment.type"].browse(appointment_type_id).filtered_domain(domain)
+            appointment_types = (
+                request.env["appointment.type"]
+                .browse(appointment_type_id)
+                .filtered_domain(domain)
+            )
         else:
             appointment_types = request.env["appointment.type"].search(domain)
 
         return {
             appointment_type.id: {
-                'id': appointment_type.id,
-                'name': appointment_type.name,
-                'staff_users': appointment_type.staff_user_ids.mapped(lambda user: {'id': user.id, 'name': user.name}),
-            } for appointment_type in appointment_types
+                "id": appointment_type.id,
+                "name": appointment_type.name,
+                "staff_users": appointment_type.staff_user_ids.mapped(
+                    lambda user: {"id": user.id, "name": user.name}
+                ),
+            }
+            for appointment_type in appointment_types
         }
