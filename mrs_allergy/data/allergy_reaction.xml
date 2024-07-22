@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="mrs_mrs.other_allergy_reaction" model="mrs.allergy.reaction">
+        <record id="mrs_allergy.other_allergy_reaction" model="mrs.allergy.reaction">
             <field name="name">Other</field>
             <field name="other" eval="True" />
         </record>
