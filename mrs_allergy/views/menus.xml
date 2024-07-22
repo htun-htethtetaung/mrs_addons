@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="Allergen" id="mrs_allergen_sub_menu" parent="mrs_mrs.mrs_configuration_sub_menu" action="mrs_allergen_action">
+    </menuitem>
+    <menuitem name="Allergy Reaction" id="mrs_allergy_reaction_sub_menu" parent="mrs_mrs.mrs_configuration_sub_menu" action="mrs_allergy_reaction_action">
+    </menuitem>
+</odoo>

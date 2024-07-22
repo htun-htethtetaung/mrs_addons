@@ -23,10 +23,12 @@
                     <field name="state" widget="statusbar" statusbar_visible="DRAFT,START,ENDED"/>
                 </header>
                 <sheet>
+                    <h1>
+                        <field name="patient_id" readonly="state=='ENDED'" placeholder="Patient" />
+                    </h1>
                     <group>
                         <group string="Visit Detail">
                             <field name="state" invisible="1" />
-                            <field name="patient_id"            readonly="state=='ENDED'" />
                             <field name="is_external_doctor"    readonly="state=='ENDED'" />
                             <field name="doctor_id"             readonly="state=='ENDED'" required="not is_external_doctor" invisible="is_external_doctor" />
                             <field name="external_doctor_name"  readonly="state=='ENDED'" invisible="not is_external_doctor" />
@@ -38,95 +40,10 @@
                             <field name="note"          readonly="state=='ENDED'" placeholder="Write note here"/>
                         </group>
                     </group>
-                    <notebook >
-                        <page id="mrs_condition_lines" string="Conditions">
-                            <div>
-                                <field name="condition_ids"
-                                    widget="section_and_note_one2many"
-                                    readonly="state!='START'"
-                                    mode="tree">
-                                    <tree editable="bottom">
-                                        <field name="diagnosis_id" />
-                                        <field name="start_date" />
-                                        <field name="state" />
-                                        <field name="active" />
-                                    </tree>
-                                </field>
-                            </div>
+                    <notebook id="mrs_visit_notebook">
+                        <page id="mrs_visit_first_page" invisible="True">
                         </page>
-                        <page id="mrs_vital_and_biometric_lines" string="Vitals &amp; Biometrics">
-                            <div>
-                                <label for="vital_ids" string="Vitals"/>
-                            </div>
-                            <div>
-                                <field name="vital_ids"
-                                    widget="section_and_note_one2many"
-                                    readonly="state!='START'"
-                                    mode="tree">
-                                    <tree editable="bottom">
-                                        <field name="recorded_date" />
-                                        <field name="temperature" />
-                                        <field name="blood_pressure" />
-                                        <field name="pulse" />
-                                        <field name="respiration_rate" />
-                                        <field name="spo_two" />
-                                    </tree>
-                                </field>
-                            </div>
-                            <div>
-                                <label for="biometric_ids" string="Biometrics"/>
-                            </div>
-                            <div>
-                                <field name="biometric_ids"
-                                    widget="section_and_note_one2many"
-                                    readonly="state!='START'"
-                                    mode="tree">
-                                    <tree editable="bottom">
-                                        <field name="recorded_date" />
-                                        <field name="weight" />
-                                        <field name="height" />
-                                        <field name="bmi" />
-                                        <field name="muac" />
-                                    </tree>
-                                </field>
-                            </div>
-                        </page>
-                        <page id="mrs_prescription_lines" string="Prescription">
-                            <div>
-                                <label for="prescription_order_ids" string="Drag Orders"/>
-                            </div>
-                            <div>
-                                <field name="prescription_order_ids"
-                                    widget="section_and_note_one2many"
-                                    readonly="state!='START'"
-                                    mode="tree">
-                                    <tree>
-                                        <field name="product_id" />
-                                        <field name="quantity" />
-                                        <field name="uom_id" />
-                                        <field name="dose_free_text" />
-                                        <field name="frequency_qty" />
-                                        <button name="unknown" string="Per" disabled="1"/>
-                                        <field name="frequency_uom_id" />
-                                    </tree>
-                                </field>
-                            </div>
-                            <div>
-                                <label for="prescription_lab_ids" string="Lab Orders"/>
-                            </div>
-                            <div>
-                                <field name="prescription_lab_ids"
-                                    widget="section_and_note_one2many"
-                                    readonly="state!='START'"
-                                    mode="tree">
-                                    <tree>
-                                        <field name="laboratory_id" />
-                                        <field name="lab_ref_no" />
-                                        <field name="priority" />
-                                        <field name="instruction" />
-                                    </tree>
-                                </field>
-                            </div>
+                        <page id="mrs_visit_second_page" invisible="True">
                         </page>
                     </notebook>
                 </sheet>
@@ -150,6 +67,7 @@
                 <field name="doctor_id" />
                 <field name="start_date" />
                 <field name="end_date" />
+                <field name="state" />
             </tree>
         </field>
     </record>

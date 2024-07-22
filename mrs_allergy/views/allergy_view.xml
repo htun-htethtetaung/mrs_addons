@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_allergy_form" model="ir.ui.view">
+        <field name="name">Allergy</field>
+        <field name="model">mrs.allergy</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="other_allergen" invisible="True" />
+                            <field name="allergen_id" />
+                            <field name="allergen_detail" required="other_allergen" invisible="not other_allergen" />
+
+                            <field name="other_allergy_reaction" invisible="True" />
+                            <field name="allergy_reaction_id" />
+                            <field name="allergy_reaction_detail" required="other_allergy_reaction" invisible="not other_allergy_reaction" />
+                            <field name="reaction_level" />
+                        </group>
+                        <group>
+                            <field name="recorded_date" />
+                            <field name="note" />
+                            <field name="active" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_allergy_list" model="ir.ui.view">
+        <field name="name">Allergy</field>
+        <field name="model">mrs.allergy</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="allergen_id" />
+                <field name="allergen_detail" />
+                <field name="allergy_reaction_id" />
+                <field name="allergy_reaction_detail" />
+                <field name="reaction_level" />
+            </tree>
+        </field>
+    </record>
+</odoo>

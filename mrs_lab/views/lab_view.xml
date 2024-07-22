@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_lab_form" model="ir.ui.view">
+        <field name="name">Prescription Lab</field>
+        <field name="model">mrs.lab</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="test_type_id" />
+                            <field name="lab_ref_no" />
+
+                        </group>
+                        <group>
+                            <field name="priority" />
+                            <field name="note" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_lab_list" model="ir.ui.view">
+        <field name="name">Prescription Lab</field>
+        <field name="model">mrs.lab</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="test_type_id" />
+                <field name="lab_ref_no" />
+                <field name="priority" />
+                <field name="note" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_lab_action" model="ir.actions.act_window">
+        <field name="name">Prescription Lab</field>
+        <field name="res_model">mrs.lab</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Lab
+            </p><p>
+            Create Lab
+            </p>
+        </field>
+    </record>
+</odoo>

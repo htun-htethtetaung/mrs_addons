@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!-- PRESCRIPTION ORDER START -->
     <record id="view_mrs_prescription_order_form" model="ir.ui.view">
         <field name="name">Prescription Order</field>
         <field name="model">mrs.prescription.order</field>
@@ -68,99 +67,8 @@
             <p class="o_view_nocontent_smiling_face">
             Add a new Prescripiton
             </p><p>
-            Create car
+            Create Prescripiton
             </p>
         </field>
     </record>
-<!-- PRESCRIPTION ORDER END -->
-
-<!-- PRESCRIPTION LAB START -->
-    <record id="view_mrs_prescription_lab_form" model="ir.ui.view">
-        <field name="name">Prescription Lab</field>
-        <field name="model">mrs.prescription.lab</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <group string="Instructions">
-                            <field name="laboratory_id" />
-                            <field name="lab_ref_no" />
-
-                        </group>
-                        <group string="Prescription Duration">
-                            <field name="priority" />
-                            <field name="instruction" />
-                        </group>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-    <record id="view_mrs_prescription_lab_list" model="ir.ui.view">
-        <field name="name">Prescription Lab</field>
-        <field name="model">mrs.prescription.lab</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="laboratory_id" />
-                <field name="lab_ref_no" />
-                <field name="priority" />
-                <field name="instruction" />
-            </tree>
-        </field>
-    </record>
-    <record id="mrs_prescripiton_lab_action" model="ir.actions.act_window">
-        <field name="name">Prescription Lab</field>
-        <field name="res_model">mrs.prescription.lab</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-            Add a new Prescripiton Lab
-            </p><p>
-            Create car
-            </p>
-        </field>
-    </record>
-<!-- PRESCRIPTION LAB END -->
-<!-- LAB START -->
-    <record id="view_mrs_lab_form" model="ir.ui.view">
-        <field name="name">Laboaratory</field>
-        <field name="model">mrs.lab</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <group>
-                            <field name="name" />
-                        </group>
-                        <group>
-                            <field name="code" />
-                        </group>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-    <record id="view_mrs_lab_list" model="ir.ui.view">
-        <field name="name">Laboaratory</field>
-        <field name="model">mrs.lab</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="code"/>
-            </tree>
-        </field>
-    </record>
-    <record id="mrs_lab_action" model="ir.actions.act_window">
-        <field name="name">Laboaratory</field>
-        <field name="res_model">mrs.lab</field>
-        <field name="view_mode">tree,form</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-            Add a new Laboaratory
-            </p><p>
-            Create car
-            </p>
-        </field>
-    </record>
-<!-- LAB END -->
 </odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mrs_visit_allergy_form">
+        <field name="name">mrs.visit.allergy</field>
+        <field name="model">mrs.visit</field>
+        <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
+        <field name="arch" type="xml">
+            <page id="mrs_visit_first_page" position="after">
+                <page id="mrs_prescription_lines" string="Prescriptions">
+                    <div>
+                        <field name="prescription_order_ids"
+                            widget="section_and_note_one2many"
+                            readonly="state=='ENDED'"
+                            mode="tree">
+                            <tree>
+                                <field name="product_id" />
+                                <field name="quantity" />
+                                <field name="uom_id" />
+                                <field name="dose_free_text" />
+                                <field name="frequency_qty" />
+                                <button name="unknown" string="Per" disabled="1"/>
+                                <field name="frequency_uom_id" />
+                            </tree>
+                        </field>
+                    </div>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

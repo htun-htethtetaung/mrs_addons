@@ -9,7 +9,10 @@ class Biometric(models.Model):
 
     visit_id = fields.Many2one(comodel_name="mrs.visit", index=True)
     patient_id = fields.Many2one(
-        comodel_name="res.partner", index=True, related="visit_id.patient_id"
+        comodel_name="res.partner",
+        index=True,
+        related="visit_id.patient_id",
+        readonly=False,
     )
     recorded_date = fields.Datetime(index=True, default=lambda x: datetime.now())
     weight = fields.Float(string="Weight (kg)")

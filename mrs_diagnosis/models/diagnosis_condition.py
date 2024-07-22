@@ -24,6 +24,7 @@ class DiagnosisCondition(models.Model):
         related="visit_id.patient_id",
         index=True,
         store=True,
+        readonly=False,
     )
     diagnosis_id = fields.Many2one(comodel_name="mrs.diagnosis")
     state = fields.Selection(

@@ -1,0 +1,28 @@
+# pylint: disable=pointless-statement,missing-module-docstring,duplicate-code
+{
+    "name": "Medical Record System Allergy",
+    "version": "1.0.0",
+    "category": "medical",
+    "summary": "Medical Record System Allergy",
+    "sequence": "1",
+    "website": "https://www.cosmosmm.com",
+    "author": "Lwin Maung Maung",
+    "maintainer": "lwinmaungmaung@cosmosmm.com",
+    "description": "Medical Record System Allergy",
+    "license": "LGPL-3",
+    "support": "lwinmaungmaung@cosmosmm.com",
+    "depends": ["mrs_mrs"],
+    "demo": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/allergen.xml",
+        "data/allergy_reaction.xml",
+        "views/allergen_view.xml",
+        "views/allergy_reaction_view.xml",
+        "views/allergy_view.xml",
+        "views/visit_allergy_view.xml",
+        "views/menus.xml",
+    ],
+    "application": True,
+    "installable": True,
+}

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mrs_diagnosis.access_mrs_diagnosis_condition,access_mrs_diagnosis_condition,mrs_diagnosis.model_mrs_diagnosis_condition,base.group_user,1,0,0,0
+mrs_diagnosis.access_mrs_diagnosis,access_mrs_diagnosis,mrs_diagnosis.model_mrs_diagnosis,base.group_user,1,0,0,0

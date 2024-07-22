@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mrs_mrs.other_allergen" model="mrs.allergen">
+            <field name="name">Other</field>
+            <field name="type">OTHER</field>
+            <field name="other" eval="True" />
+        </record>
+    </data>
+</odoo>
