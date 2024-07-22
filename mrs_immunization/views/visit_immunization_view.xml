@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_immunization_form" model="ir.ui.view">
+        <field name="name">Visit Immunization Line</field>
+        <field name="model">mrs.visit.immunization</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="immunization_id" />
+                            <field name="dose_number" />
+                            <field name="manufacturer" />
+                        </group>
+                        <group>
+                            <field name="vaccination_date" />
+                            <field name="expire_date" />
+                            <field name="note" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_immunization_list" model="ir.ui.view">
+        <field name="name">Visit Immunization Line</field>
+        <field name="model">mrs.visit.immunization</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="immunization_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_visit_immunization_action" model="ir.actions.act_window">
+        <field name="name">Visit Immunization Line</field>
+        <field name="res_model">mrs.visit.immunization</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Immunization
+            </p><p>
+            Create Immunization
+            </p>
+        </field>
+    </record>
+</odoo>

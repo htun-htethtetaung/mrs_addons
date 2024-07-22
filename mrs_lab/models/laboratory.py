@@ -15,16 +15,10 @@ class LabPriority(Enum):
 class PrescriptionLab(models.Model):
     _name = "mrs.lab"
 
+    _inherit = "mrs.visit.line.abstract"
+
     _description = "Laboratory"
 
-    visit_id = fields.Many2one(comodel_name="mrs.visit")
-    patient_id = fields.Many2one(
-        comodel_name="res.partner",
-        related="visit_id.patient_id",
-        store=True,
-        readonly=False,
-        index=True,
-    )
     test_type_id = fields.Many2one(comodel_name="mrs.lab.test.type", string="Test Type")
     lab_ref_no = fields.Char(index=True)
     priority = fields.Selection(selection=list(LabPriority.name_value()))

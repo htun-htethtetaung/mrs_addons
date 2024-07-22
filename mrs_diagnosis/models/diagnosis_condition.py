@@ -16,16 +16,10 @@ class DiagnosisConditionStatus(Enum):
 class DiagnosisCondition(models.Model):
     _name = "mrs.diagnosis.condition"
 
+    _inherit = "mrs.visit.line.abstract"
+
     _description = "Diagnosis Conditions"
 
-    visit_id = fields.Many2one(comodel_name="mrs.visit", index=True)
-    patient_id = fields.Many2one(
-        comodel_name="res.partner",
-        related="visit_id.patient_id",
-        index=True,
-        store=True,
-        readonly=False,
-    )
     diagnosis_id = fields.Many2one(comodel_name="mrs.diagnosis")
     state = fields.Selection(
         selection=list(DiagnosisConditionStatus.name_value()),

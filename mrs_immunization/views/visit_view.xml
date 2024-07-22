@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mrs_visit_immunization_form">
+        <field name="name">mrs.visit.immunization</field>
+        <field name="model">mrs.visit</field>
+        <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
+        <field name="arch" type="xml">
+            <page id="mrs_visit_second_page" position="after">
+                <page id="mrs_immunization_lines" string="Immunizations">
+                    <div>
+                        <field name="immunization_ids"
+                            widget="section_and_note_one2many"
+                            readonly="state=='ENDED'"
+                            mode="tree">
+                            <tree>
+                                <field name="immunization_id" />
+                                <field name="dose_number" />
+                                <field name="manufacturer" />
+                                <field name="vaccination_date" />
+                                <field name="expire_date" />
+                            </tree>
+                        </field>
+                    </div>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

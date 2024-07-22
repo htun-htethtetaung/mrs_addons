@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_immunization_form" model="ir.ui.view">
+        <field name="name">MRS Immunization</field>
+        <field name="model">mrs.immunization</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="code" />
+                        </group>
+                        <group>
+                            <field name="product_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_immunization_list" model="ir.ui.view">
+        <field name="name">MRS Immunization</field>
+        <field name="model">mrs.immunization</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="code" />
+                <field name="product_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_immunization_action" model="ir.actions.act_window">
+        <field name="name">MRS Immunization</field>
+        <field name="res_model">mrs.immunization</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new MRS Immunization
+            </p><p>
+            Create MRS Immunization
+            </p>
+        </field>
+    </record>
+</odoo>

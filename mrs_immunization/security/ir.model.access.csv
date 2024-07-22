@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mrs_immunization.access_mrs_immunization,access_mrs_immunization,mrs_immunization.model_mrs_immunization,base.group_user,1,0,0,0
+mrs_immunization.access_mrs_visit_immunization,access_mrs_visit_immunization,mrs_immunization.model_mrs_visit_immunization,base.group_user,1,0,0,0

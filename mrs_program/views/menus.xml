@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem name="MRS Programs" id="mrs_program_sub_menu" parent="mrs_mrs.mrs_configuration_sub_menu" action="mrs_program_action">
+    </menuitem>
+</odoo>

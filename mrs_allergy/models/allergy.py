@@ -7,10 +7,10 @@ from .allergy_reaction import ReactionLevel
 class AllergyLine(models.Model):
     _name = "mrs.allergy"
 
-    visit_id = fields.Many2one(comodel_name="mrs.visit", index=True)
-    patient_id = fields.Many2one(
-        comodel_name="res.partner", index=True, related="visit_id.patient_id"
-    )
+    _inherit = "mrs.visit.line.abstract"
+
+    _description = "Visit Allergy Line"
+
     recorded_date = fields.Datetime(index=True, default=lambda x: datetime.now())
     allergen_id = fields.Many2one(comodel_name="mrs.allergen")
     other_allergen = fields.Boolean(

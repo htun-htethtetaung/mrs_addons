@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_mrs_visit_allergy_form">
-        <field name="name">mrs.visit.allergy</field>
+    <record model="ir.ui.view" id="view_mrs_visit_vital_bio_form">
+        <field name="name">mrs.visit.vital_bio</field>
         <field name="model">mrs.visit</field>
         <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
         <field name="arch" type="xml">
-            <page id="mrs_visit_second_page" position="after">
+            <page id="mrs_visit_second_page" position="before">
                 <page id="mrs_vital_biometric_lines" string="Vitals &amp; Biometrics">
                     <div>
                         <label for="vital_ids" string="Vitals"/>
@@ -13,7 +13,7 @@
                     <div>
                         <field name="vital_ids"
                             widget="section_and_note_one2many"
-                            readonly="state!='START'"
+                            readonly="state!='ENDED'"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />
@@ -31,7 +31,7 @@
                     <div>
                         <field name="biometric_ids"
                             widget="section_and_note_one2many"
-                            readonly="state!='START'"
+                            readonly="state!='ENDED'"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />

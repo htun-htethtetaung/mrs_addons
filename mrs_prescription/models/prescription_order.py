@@ -4,16 +4,10 @@ from odoo import models, fields
 class PrescriptionOrder(models.Model):
     _name = "mrs.prescription.order"
 
+    _inherit = "mrs.visit.line.abstract"
+
     _description = "Prescription Order"
 
-    visit_id = fields.Many2one(comodel_name="mrs.visit")
-    patient_id = fields.Many2one(
-        comodel_name="res.partner",
-        related="visit_id.patient_id",
-        readonly=False,
-        store=True,
-        index=True,
-    )
     # Related to Dose
     is_dose_free_text = fields.Boolean("Free Text Dose?", default=False)
     dose_free_text = fields.Text()

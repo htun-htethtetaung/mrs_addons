@@ -5,15 +5,10 @@ from odoo import models, fields
 class Vital(models.Model):
     _name = "mrs.vital"
 
+    _inherit = "mrs.visit.line.abstract"
+
     _description = "Vital Data"
 
-    visit_id = fields.Many2one(comodel_name="mrs.visit", index=True)
-    patient_id = fields.Many2one(
-        comodel_name="res.partner",
-        readonly=False,
-        index=True,
-        related="visit_id.patient_id",
-    )
     recorded_date = fields.Datetime(index=True, default=lambda x: datetime.now())
     temperature = fields.Float(string="TEMP (DEG C)")
     blood_pressure = fields.Float(string="B/P (mmHg)")

@@ -59,7 +59,7 @@
             </tree>
         </field>
     </record>
-    <record id="mrs_prescripiton_order_action" model="ir.actions.act_window">
+    <record id="mrs_prescription_order_action" model="ir.actions.act_window">
         <field name="name">Prescription Order</field>
         <field name="res_model">mrs.prescription.order</field>
         <field name="view_mode">tree,form</field>
