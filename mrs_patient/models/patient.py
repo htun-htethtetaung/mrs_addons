@@ -58,16 +58,11 @@ class MrsPatient(models.Model):
         comodel_name="patient.insurance", inverse_name="patient_id"
     )
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals_list):
-        if not isinstance(vals_list, list):
-            vals_list = [vals_list]
-
         for vals in vals_list:
             if vals.get("patient_code", "New") == "New":
                 vals["patient_code"] = (
                     self.env["ir.sequence"].next_by_code("mrs.patient") or "New"
                 )
-
-        result = super().create(vals_list)
-        return result
+        return super().create(vals_list)
