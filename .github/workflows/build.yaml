@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    if: github.repository_owner == 'lwinmgmg'
+    if: github.repository_owner == 'lwinmgmg' && ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       -
