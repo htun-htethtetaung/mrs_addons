@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem
+        id="mrs_patients_habits_menu"
+        parent="contacts.res_partner_menu_config"
+        action="mrs_habit_action"
+        name="Habits"
+        sequence="0"/>
+
+        <menuitem
+        id="mrs_patients_insurance_menu"
+        parent="contacts.res_partner_menu_config"
+        action="patient_insurance_action"
+        name="Insurance"
+        sequence="0"/>
+</odoo>

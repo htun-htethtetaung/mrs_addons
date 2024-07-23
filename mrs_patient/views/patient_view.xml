@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrs_patient_view_form" model="ir.ui.view">
+        <field name="name">mrs.patient.view.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Patient Details">
+                    <group>
+                        <group>
+                            <field name="patient_code"/>
+                            <field name="date_of_birth"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="occupation"/>
+                            <field name="habit_ids" widget="many2many_tags"/>
+                            <field name="disability"/>
+                        </group>
+                    </group>
+                    <group string="Insurance">
+                        <field name="insurance_ids" nolabel="1" colspan="2" context="{'default_partner_id': id}">
+                            <tree string="Insurances">
+                                <field name="patient_id"/>
+                                <field name="policy_number"/>
+                                <field name="provider_id"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+    <record id="mrs_habit_action" model="ir.actions.act_window">
+        <field name="name">Habits</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrs.habits</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Habits
+            </p>
+        </field>
+    </record>
+    <record id="view_patient_insurance_form" model="ir.ui.view">
+        <field name="name">Patient Insurance</field>
+        <field name="model">patient.insurance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="policy_number" />
+                            <field name="patient_id" />
+                        </group>
+                        <group>
+                            <field name="provider_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_patient_insurance_list" model="ir.ui.view">
+        <field name="name">Patient Insurance</field>
+        <field name="model">patient.insurance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="policy_number" />
+                <field name="patient_id" />
+                <field name="provider_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="patient_insurance_action" model="ir.actions.act_window">
+        <field name="name">Insurance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.insurance</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Insurance
+            </p>
+        </field>
+    </record>
+        <record id="view_insurance_provider_list" model="ir.ui.view">
+        <field name="name">Insurance Provider</field>
+        <field name="model">insurance.provider</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <record id="insurance_provider_action" model="ir.actions.act_window">
+        <field name="name">Provider</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.provider</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add a new Insurance Provider
+            </p>
+        </field>
+    </record>
+</odoo>
