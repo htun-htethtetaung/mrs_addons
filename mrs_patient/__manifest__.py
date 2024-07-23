@@ -13,7 +13,7 @@
     "support": "htunhtethtet.aung@cosmosmm.com",
     "depends": [
         "base",
-        "contact",
+        "contacts",
     ],
     "demo": [],
     "data": [
