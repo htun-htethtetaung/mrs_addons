@@ -8,14 +8,18 @@
     "sequence": "1",
     "website": "https://www.cosmosmm.com",
     "author": "Lwin Maung Maung",
-    "maintainer": "htunhtethtetaung93@gmail.com",
+    "maintainer": "htunhtethtet.aung@cosmosmm.com",
     "license": "LGPL-3",
-    "support": "htunhtethtetaung93@gmail.com",
+    "support": "htunhtethtet.aung@cosmosmm.com",
     "depends": [
         "base",
     ],
     "demo": [],
-    "data": [],
+    "data": [
+        "data/patient_data.xml",
+        "views/patient_view.xml",
+        "views/menu.xml",
+    ],
     "application": True,
     "installable": True,
 }
