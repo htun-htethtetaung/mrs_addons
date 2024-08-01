@@ -32,6 +32,8 @@ class MrsPatient(models.Model):
 
     _inherit = "res.partner"
 
+    is_patient = fields.Boolean(default=False)
+
     date_of_birth = fields.Date(string="Date of Birth")
     gender = fields.Selection(
         [

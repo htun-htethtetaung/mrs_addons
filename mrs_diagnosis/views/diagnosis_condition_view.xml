@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_mrs_lab_form" model="ir.ui.view">
-        <field name="name">Prescription Lab</field>
-        <field name="model">mrs.lab</field>
+    <record id="view_mrs_diagnosis_condition_form" model="ir.ui.view">
+        <field name="name">Diagnosis Conditions</field>
+        <field name="model">mrs.diagnosis.condition</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
-                            <field name="test_type_id" />
-                            <field name="lab_ref_no" />
-
+                            <field name="diagnosis_id" />
+                            <field name="state" />
+                            <field name="active" />
                         </group>
                         <group>
-                            <field name="priority" />
+                            <field name="start_date" />
+                            <field name="end_date" />
                             <field name="note" />
                         </group>
                     </group>
-                    <notebook id="mrs_lab_notebook">
-                        <page id="mrs_lab_attachment" string="Attachments">
+                    <notebook id="mrs_diagnosis_condition_notebook">
+                        <page id="mrs_diagnosis_condition_attachment" string="Attachments">
                             <div>
                                 <field name="res_model" invisible="1" />
                                 <field name="os_attachment_ids"
@@ -39,27 +40,28 @@
             </form>
         </field>
     </record>
-    <record id="view_mrs_lab_list" model="ir.ui.view">
-        <field name="name">Prescription Lab</field>
-        <field name="model">mrs.lab</field>
+    <record id="view_mrs_diagnosis_condition_list" model="ir.ui.view">
+        <field name="name">Diagnosis Conditions</field>
+        <field name="model">mrs.diagnosis.condition</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="test_type_id" />
-                <field name="lab_ref_no" />
-                <field name="priority" />
-                <field name="note" />
+                <field name="diagnosis_id" />
+                <field name="state" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <field name="active" />
             </tree>
         </field>
     </record>
-    <record id="mrs_lab_action" model="ir.actions.act_window">
-        <field name="name">Prescription Lab</field>
-        <field name="res_model">mrs.lab</field>
+    <record id="mrs_diagnosis_condition_action" model="ir.actions.act_window">
+        <field name="name">Diagnosis Conditions</field>
+        <field name="res_model">mrs.diagnosis.condition</field>
         <field name="view_mode">tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-            Add a new Lab
+            Add a new Diagnosis Conditions
             </p><p>
-            Create Lab
+            Create Diagnosis Conditions
             </p>
         </field>
     </record>

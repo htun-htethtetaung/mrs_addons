@@ -15,7 +15,7 @@ class LabPriority(Enum):
 class PrescriptionLab(models.Model):
     _name = "mrs.lab"
 
-    _inherit = "mrs.visit.line.abstract"
+    _inherit = ["mrs.visit.line.abstract", "os.attachment.holder"]
 
     _description = "Laboratory"
 

@@ -19,10 +19,17 @@ class Visit(models.Model):
 
     _description = "Visit to patient"
 
-    _inherit = ["mail.thread.main.attachment", "mail.activity.mixin"]
+    _inherit = [
+        "mail.thread.main.attachment",
+        "mail.activity.mixin",
+        "os.attachment.holder",
+    ]
 
     patient_id = fields.Many2one(
-        comodel_name="res.partner", required=True, tracking=True
+        comodel_name="res.partner",
+        required=True,
+        tracking=True,
+        domain="[('is_patient', '=', True)]",
     )
     name = fields.Char(related="patient_id.name")
     doctor_id = fields.Many2one(

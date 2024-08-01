@@ -34,7 +34,7 @@
                             <field name="external_doctor_name"  readonly="state=='ENDED'" invisible="not is_external_doctor" />
                             <field name="mrs_location_id"       readonly="state=='ENDED'" />
                         </group>
-                        <group string="Diagnosis">
+                        <group>
                             <field name="start_date"    readonly="state=='ENDED'" required="state=='START'" />
                             <field name="end_date" />
                             <field name="note"          readonly="state=='ENDED'" placeholder="Write note here"/>
@@ -44,6 +44,24 @@
                         <page id="mrs_visit_first_page" invisible="True">
                         </page>
                         <page id="mrs_visit_second_page" invisible="True">
+                        </page>
+                        <page id="attachments" string="Attachments">
+                            <div>
+                                <field name="res_model" invisible="1" />
+                                <field name="os_attachment_ids"
+                                    widget="section_and_note_one2many"
+                                    readonly="state=='ENDED'"
+                                    context="{'default_res_model': res_model}"
+                                    mode="tree">
+                                    <tree>
+                                        <field name="name" />
+                                        <field name="type" />
+                                        <field name="write_date" />
+                                        <field name="write_uid" />
+                                        <button name="preview" type="object" string="View" />
+                                    </tree>
+                                </field>
+                            </div>
                         </page>
                     </notebook>
                 </sheet>
@@ -79,7 +97,7 @@
             <p class="o_view_nocontent_smiling_face">
             Add a new Medical History
             </p><p>
-            Create car
+            Create Medical History
             </p>
         </field>
     </record>

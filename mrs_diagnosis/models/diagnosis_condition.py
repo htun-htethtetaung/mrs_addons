@@ -4,8 +4,8 @@ from odoo import fields, models
 
 
 class DiagnosisConditionStatus(Enum):
-    PRIMARY = "PRIMARY"
-    SECONDARY = "SECONDARY"
+    PRIMARY = "Primary"
+    SECONDARY = "Secondary"
 
     @classmethod
     def name_value(cls):
@@ -16,7 +16,7 @@ class DiagnosisConditionStatus(Enum):
 class DiagnosisCondition(models.Model):
     _name = "mrs.diagnosis.condition"
 
-    _inherit = "mrs.visit.line.abstract"
+    _inherit = ["mrs.visit.line.abstract", "os.attachment.holder"]
 
     _description = "Diagnosis Conditions"
 
@@ -27,4 +27,5 @@ class DiagnosisCondition(models.Model):
     )
     start_date = fields.Datetime(index=True, default=lambda x: datetime.now())
     end_date = fields.Datetime()
+    note = fields.Text()
     active = fields.Boolean(default=True, index=True)

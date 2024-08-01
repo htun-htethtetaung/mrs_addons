@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+object_storage.access_os_attachment_type,access_os_attachment_type,object_storage.model_os_attachment_type,base.group_user,1,0,0,0
+object_storage.access_os_attachment_gc,access_os_attachment_gc,object_storage.model_os_attachment_gc,base.group_user,1,1,1,1

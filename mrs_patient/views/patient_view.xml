@@ -10,6 +10,7 @@
                 <page string="Patient Details">
                     <group>
                         <group>
+                            <field name="is_patient" />
                             <field name="patient_code"/>
                             <field name="date_of_birth"/>
                             <field name="gender"/>

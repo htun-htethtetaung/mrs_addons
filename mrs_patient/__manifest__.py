@@ -11,10 +11,7 @@
     "maintainer": "htunhtethtet.aung@cosmosmm.com",
     "license": "LGPL-3",
     "support": "htunhtethtet.aung@cosmosmm.com",
-    "depends": [
-        "base",
-        "contacts",
-    ],
+    "depends": ["base", "contacts"],
     "demo": [],
     "data": [
         "data/patient_data.xml",

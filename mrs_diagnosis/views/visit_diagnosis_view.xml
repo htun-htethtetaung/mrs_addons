@@ -12,7 +12,7 @@
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
                             mode="tree">
-                            <tree editable="bottom">
+                            <tree>
                                 <field name="diagnosis_id" />
                                 <field name="start_date" />
                                 <field name="state" />

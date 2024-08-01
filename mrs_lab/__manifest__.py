@@ -11,7 +11,7 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
     "support": "lwinmaungmaung@cosmosmm.com",
-    "depends": ["mrs_mrs"],
+    "depends": ["mrs_mrs", "object_storage"],
     "demo": [],
     "data": [
         "security/ir.model.access.csv",

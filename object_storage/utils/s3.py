@@ -13,6 +13,22 @@ from .env import (
 _logger = logging.getLogger(f"{__name__} : #S3")
 
 
+def retry_func(retry: int = 1):
+    def inner_func_parent(func):
+        def inner_func(*args, **kwargs):
+            for count in range(1, retry + 1):
+                try:
+                    return func(*args, **kwargs)
+                except ClientError as err:
+                    if count < retry:
+                        continue
+                    raise err
+
+        return inner_func
+
+    return inner_func_parent
+
+
 class S3ContextMgr:
     def __init__(self) -> None:
         self.bucket_name = AWS_BUCKET_NAME
@@ -42,6 +58,7 @@ class S3ContextMgr:
                     )
 
     # pylint: disable=too-many-arguments
+    @retry_func(retry=2)
     def put_object(
         self,
         data: bytes,
@@ -77,8 +94,9 @@ class S3ContextMgr:
                 Metadata=metadata,
                 ContentDisposition=filename,
             )
-        return filename
+        return key
 
+    @retry_func(retry=2)
     def delete_object(self, key: str, bucket_name: str = AWS_BUCKET_NAME):
         """Delete object from s3
 
@@ -92,6 +110,7 @@ class S3ContextMgr:
                 Key=key,
             )
 
+    @retry_func(retry=2)
     def get_object(self, key: str, bucket_name: str = AWS_BUCKET_NAME):
         """Get object from s3
 

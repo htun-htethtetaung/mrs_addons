@@ -13,7 +13,11 @@
     "support": "lwinmaungmaung@cosmosmm.com",
     "depends": ["base"],
     "demo": [],
-    "data": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/os_attachment_type_data.xml",
+        "views/os_attachment_view.xml",
+    ],
     "external_dependencies": {"boto3": "1.*"},
     "application": True,
     "installable": True,

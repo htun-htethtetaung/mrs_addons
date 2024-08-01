@@ -17,6 +17,7 @@
         "security/ir.model.access.csv",
         "views/diagnosis_view.xml",
         "views/visit_diagnosis_view.xml",
+        "views/diagnosis_condition_view.xml",
         "views/menus.xml",
     ],
     "application": True,
