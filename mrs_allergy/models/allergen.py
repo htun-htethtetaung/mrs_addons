@@ -22,6 +22,6 @@ class Allergen(models.Model):
 
     name = fields.Char()
     type = fields.Selection(
-        selection=list(AllergenType.name_value()), default=AllergenType.FOOD
+        selection=list(AllergenType.name_value()), default=AllergenType.FOOD.name
     )
     other = fields.Boolean(default=False, readonly=True)

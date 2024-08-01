@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="mrs_patient_base_form_view" model="ir.ui.view">
+        <field name="name">Patient</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position="after">
+            </xpath>
+            <field name="child_ids" position="after">
+                <group string="Internal Notes">
+                    <field name="comment" placeholder="Internal notes..." colspan="2" nolabel="1"/>
+                </group>
+            </field>
+        </field>
+    </record>
     <record id="mrs_patient_action" model="ir.actions.act_window">
         <field name="name">Patient</field>
         <field name="res_model">res.partner</field>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrs_patient_vital_bio_form_view" model="ir.ui.view">
+        <field name="name">Patient</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='patient_detail']" position="inside">
+                <group string="Vital">
+                    <field name="vital_ids"
+                        readonly="True"
+                        widget="section_and_note_one2many"
+                        nolabel="1" colspan="2" context="{'default_patient_id': id}"
+                        mode="tree">
+                        <tree editable="bottom">
+                            <field name="recorded_date" />
+                            <field name="temperature" />
+                            <field name="blood_pressure" />
+                            <field name="pulse" />
+                            <field name="respiration_rate" />
+                            <field name="spo_two" />
+                        </tree>
+                    </field>
+                </group>
+                <group string="Biometric">
+                    <field name="biometric_ids"
+                        widget="section_and_note_one2many"
+                        readonly="True"
+                        nolabel="1" colspan="2" context="{'default_patient_id': id}"
+                        mode="tree">
+                        <tree>
+                            <field name="recorded_date" />
+                            <field name="weight" />
+                            <field name="height" />
+                            <field name="bmi" />
+                            <field name="muac" />
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

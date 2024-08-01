@@ -17,6 +17,8 @@ class PrescriptionLab(models.Model):
 
     _inherit = ["mrs.visit.line.abstract", "os.attachment.holder"]
 
+    _order = "write_date DESC"
+
     _description = "Laboratory"
 
     test_type_id = fields.Many2one(comodel_name="mrs.lab.test.type", string="Test Type")

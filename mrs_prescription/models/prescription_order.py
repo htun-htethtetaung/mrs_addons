@@ -1,3 +1,4 @@
+from datetime import datetime
 from odoo import models, fields
 
 
@@ -5,6 +6,8 @@ class PrescriptionOrder(models.Model):
     _name = "mrs.prescription.order"
 
     _inherit = "mrs.visit.line.abstract"
+
+    _order = "start_date DESC"
 
     _description = "Prescription Order"
 
@@ -20,7 +23,7 @@ class PrescriptionOrder(models.Model):
     frequency_uom_id = fields.Many2one(comodel_name="uom.uom", string="Frequency Unit")
 
     # Dose Duration
-    start_date = fields.Datetime()
+    start_date = fields.Datetime(default=lambda x: datetime.now(), index=True)
     duration = fields.Float()
     duration_uom_id = fields.Many2one(comodel_name="uom.uom")
 

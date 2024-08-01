@@ -13,7 +13,7 @@
                     <div>
                         <field name="vital_ids"
                             widget="section_and_note_one2many"
-                            readonly="state!='ENDED'"
+                            readonly="state=='ENDED'"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />
@@ -31,7 +31,7 @@
                     <div>
                         <field name="biometric_ids"
                             widget="section_and_note_one2many"
-                            readonly="state!='ENDED'"
+                            readonly="state=='ENDED'"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />

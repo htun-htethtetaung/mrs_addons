@@ -18,6 +18,8 @@ class DiagnosisCondition(models.Model):
 
     _inherit = ["mrs.visit.line.abstract", "os.attachment.holder"]
 
+    _order = "start_date desc"
+
     _description = "Diagnosis Conditions"
 
     diagnosis_id = fields.Many2one(comodel_name="mrs.diagnosis")

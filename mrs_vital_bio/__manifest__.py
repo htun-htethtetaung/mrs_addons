@@ -11,9 +11,13 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
     "support": "lwinmaungmaung@cosmosmm.com",
-    "depends": ["mrs_mrs"],
+    "depends": ["mrs_patient", "mrs_mrs"],
     "demo": [],
-    "data": ["security/ir.model.access.csv", "views/visit_view.xml"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/visit_view.xml",
+        "views/res_partner_view.xml",
+    ],
     "application": True,
     "installable": True,
 }

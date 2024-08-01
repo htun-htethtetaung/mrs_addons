@@ -1,6 +1,7 @@
 from datetime import datetime
 from enum import Enum
-from odoo import fields, models, api
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class VisitStatus(Enum):
@@ -19,13 +20,12 @@ class Visit(models.Model):
 
     _description = "Visit to patient"
 
-    _inherit = [
-        "mail.thread.main.attachment",
-        "mail.activity.mixin",
-        "os.attachment.holder",
-    ]
+    _order = "start_date DESC"
+
+    _inherit = ["mail.thread.main.attachment", "mail.activity.mixin"]
 
     patient_id = fields.Many2one(
+        index=True,
         comodel_name="res.partner",
         required=True,
         tracking=True,
@@ -51,14 +51,26 @@ class Visit(models.Model):
 
     note = fields.Text(tracking=True)
 
+    @api.constrains("patient_id", "state")
+    def _open_visit_per_patient(self):
+        for record in self:
+            if record.patient_id and self.search_count(
+                [
+                    ("id", "!=", record.id),
+                    ("patient_id", "=", record.patient_id.id),
+                    ("state", "=", VisitStatus.START.name),
+                ]
+            ):
+                raise ValidationError(_("Please end the previous started visit!"))
+
     @api.onchange("doctor_id")
-    def onchange_doctor_id(self):
+    def _onchange_doctor_id(self):
         for record in self:
             if record.doctor_id:
                 record.mrs_location_id = record.doctor_id.default_mrs_location_id.id
 
     @api.onchange("is_external_doctor")
-    def onchange_is_external_doctor(self):
+    def _onchange_is_external_doctor(self):
         for record in self:
             if record.is_external_doctor:
                 record.doctor_id = None

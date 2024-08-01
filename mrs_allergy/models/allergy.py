@@ -9,6 +9,8 @@ class AllergyLine(models.Model):
 
     _inherit = "mrs.visit.line.abstract"
 
+    _order = "recorded_date desc"
+
     _description = "Visit Allergy Line"
 
     recorded_date = fields.Datetime(index=True, default=lambda x: datetime.now())

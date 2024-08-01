@@ -7,7 +7,7 @@
         <field name="priority">10</field>
         <field name="arch" type="xml">
             <notebook position="inside">
-                <page string="Patient Details">
+                <page name="patient_detail" string="Patient Details">
                     <group>
                         <group>
                             <field name="is_patient" />

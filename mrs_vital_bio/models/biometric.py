@@ -7,6 +7,8 @@ class Biometric(models.Model):
 
     _inherit = "mrs.visit.line.abstract"
 
+    _order = "recorded_date DESC"
+
     _description = "Biometric Data"
 
     recorded_date = fields.Datetime(index=True, default=lambda x: datetime.now())
