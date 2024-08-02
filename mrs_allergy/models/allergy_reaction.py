@@ -5,6 +5,8 @@ from odoo import fields, models
 class AllergenReaction(models.Model):
     _name = "mrs.allergy.reaction"
 
+    _description = "Allergy Reaction"
+
     name = fields.Char()
     other = fields.Boolean(default=False, readonly=True)
 
