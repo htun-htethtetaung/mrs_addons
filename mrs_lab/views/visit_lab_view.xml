@@ -7,10 +7,11 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_second_page" position="before">
                 <page id="mrs_lab_lines" string="Labs">
-                    <div>
+                    <group>
                         <field name="lab_ids"
                             widget="section_and_note_one2many"
-                                readonly="state=='ENDED'"
+                            readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree>
                                 <field name="test_type_id" />
@@ -19,7 +20,7 @@
                                 <field name="note" />
                             </tree>
                         </field>
-                    </div>
+                    </group>
                 </page>
             </page>
         </field>

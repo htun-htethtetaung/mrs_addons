@@ -7,10 +7,11 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_second_page" position="after">
                 <page id="mrs_immunization_lines" string="Immunizations">
-                    <div>
+                    <group>
                         <field name="immunization_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree>
                                 <field name="immunization_id" />
@@ -20,7 +21,7 @@
                                 <field name="expire_date" />
                             </tree>
                         </field>
-                    </div>
+                    </group>
                 </page>
             </page>
         </field>

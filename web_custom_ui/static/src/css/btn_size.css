@@ -1,0 +1,14 @@
+.o_form_status_indicator_buttons button .fa-fw{
+    font-size: 1.1rem;
+    width: auto;
+}
+.o_form_status_indicator_buttons button.o_form_button_save .fa-cloud-upload::after{
+    content: " Save";
+    margin-right: 3px;
+}
+
+.o_form_status_indicator_buttons button.o_form_button_cancel .fa-undo::after{
+    content: " Discard";
+    font-size: 1rem;
+    margin-right: 3px;
+}

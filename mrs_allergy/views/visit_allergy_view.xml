@@ -7,20 +7,23 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_second_page" position="after">
                 <page id="mrs_allergy_lines" string="Allergies" sequence="15">
-                    <field name="allergy_line_ids"
-                        widget="section_and_note_one2many"
-                        readonly="state=='ENDED'"
-                        mode="tree">
-                        <tree>
-                            <field name="allergen_id" />
-                            <field name="allergen_detail" />
-                            <field name="allergy_reaction_id" />
-                            <field name="allergy_reaction_detail" />
-                            <field name="reaction_level" />
-                            <field name="recorded_date" />
-                            <field name="active" />
-                        </tree>
-                    </field>
+                    <group>
+                        <field name="allergy_line_ids"
+                            widget="section_and_note_one2many"
+                            readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree>
+                                <field name="allergen_id" />
+                                <field name="allergen_detail" />
+                                <field name="allergy_reaction_id" />
+                                <field name="allergy_reaction_detail" />
+                                <field name="reaction_level" />
+                                <field name="recorded_date" />
+                                <field name="active" />
+                            </tree>
+                        </field>
+                    </group>
                 </page>
             </page>
         </field>

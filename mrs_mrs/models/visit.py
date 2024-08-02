@@ -58,10 +58,12 @@ class Visit(models.Model):
                 [
                     ("id", "!=", record.id),
                     ("patient_id", "=", record.patient_id.id),
-                    ("state", "=", VisitStatus.START.name),
+                    ("state", "in", (VisitStatus.START.name, VisitStatus.DRAFT.name)),
                 ]
             ):
-                raise ValidationError(_("Please end the previous started visit!"))
+                raise ValidationError(
+                    _("Please end the previous (draft or started) visit!")
+                )
 
     @api.onchange("doctor_id")
     def _onchange_doctor_id(self):
@@ -86,3 +88,12 @@ class Visit(models.Model):
         for record in self:
             record.state = VisitStatus.ENDED.name
             record.end_date = record.end_date if record.end_date else datetime.now()
+
+    def get_current_visit(self, patient_id: int):
+        record = self.search(
+            [
+                ("patient_id", "=", patient_id),
+                ("state", "in", (VisitStatus.START.name, VisitStatus.DRAFT.name)),
+            ]
+        )
+        return record[0] if record else False

@@ -7,10 +7,11 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_first_page" position="before">
                 <page id="mrs_condition_lines" string="Conditions" sequence="10">
-                    <div>
+                    <group>
                         <field name="condition_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree>
                                 <field name="diagnosis_id" />
@@ -19,7 +20,7 @@
                                 <field name="active" />
                             </tree>
                         </field>
-                    </div>
+                    </group>
                 </page>
             </page>
         </field>

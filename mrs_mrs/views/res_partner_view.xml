@@ -5,20 +5,47 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='internal_notes']" position="after">
+            <xpath expr="//page[@name='internal_notes']" position="replace">
             </xpath>
             <field name="child_ids" position="after">
                 <group string="Internal Notes">
                     <field name="comment" placeholder="Internal notes..." colspan="2" nolabel="1"/>
                 </group>
             </field>
+            <xpath expr="//form/sheet" position="before">
+                <header>
+                    <field name="current_visit" invisible="1" />
+                    <button name="action_go_to_current_visit" type="object" invisible="current_visit" string="Start Visit" class="oe_highlight" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" invisible="not current_visit" string="Continue Visit" class="oe_highlight" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                </header>
+            </xpath>
+            <notebook position="inside">
+                <page name="medical_histories" string="Medical History">
+                    <group string="Visits">
+                        <field 
+                            name="visit_ids"
+                            widget="section_and_note_one2many"
+                            mode="tree"
+                            no_delete="True"
+                            nolabel="1" colspan="2" context="{'default_patient_id': id}">
+                            <tree>
+                                <field name="doctor_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </notebook>
         </field>
     </record>
+
     <record id="mrs_patient_action" model="ir.actions.act_window">
         <field name="name">Patient</field>
         <field name="res_model">res.partner</field>
         <field name="domain">[('is_patient', '=', True)]</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">kanban,tree,form</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
             Add a new Patient

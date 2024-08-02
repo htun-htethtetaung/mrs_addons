@@ -7,10 +7,11 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_second_page" position="after">
                 <page id="mrs_program_lines" string="Programs">
-                    <div>
+                    <group>
                         <field name="program_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="program_id" />
@@ -19,7 +20,7 @@
                                 <field name="mrs_location_id" />
                             </tree>
                         </field>
-                    </div>
+                    </group>
                 </page>
             </page>
         </field>

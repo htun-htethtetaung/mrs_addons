@@ -7,13 +7,11 @@
         <field name="arch" type="xml">
             <page id="mrs_visit_second_page" position="before">
                 <page id="mrs_vital_biometric_lines" string="Vitals &amp; Biometrics">
-                    <div>
-                        <label for="vital_ids" string="Vitals"/>
-                    </div>
-                    <div>
+                    <group string="Vitals">
                         <field name="vital_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />
@@ -24,14 +22,12 @@
                                 <field name="spo_two" />
                             </tree>
                         </field>
-                    </div>
-                    <div>
-                        <label for="biometric_ids" string="Biometrics"/>
-                    </div>
-                    <div>
+                    </group>
+                    <group string="Biometrics">
                         <field name="biometric_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
                             mode="tree">
                             <tree editable="bottom">
                                 <field name="recorded_date" />
@@ -41,7 +37,7 @@
                                 <field name="muac" />
                             </tree>
                         </field>
-                    </div>
+                    </group>
                 </page>
             </page>
         </field>
