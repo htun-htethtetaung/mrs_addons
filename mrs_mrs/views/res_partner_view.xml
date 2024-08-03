@@ -31,7 +31,7 @@
                 </header>
             </xpath>
             <notebook position="inside">
-                <page name="medical_histories" string="Visits">
+                <page name="medical_histories" string="Visits" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group>
                         <field 
                             name="visit_ids"
@@ -49,6 +49,18 @@
                     </group>
                 </page>
             </notebook>
+        </field>
+    </record>
+
+
+    <record id="mrs_patient_form_view" model="ir.ui.view">
+        <field name="name">Patient</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
+        <field name="arch" type="xml">
+            <page name="patient_detail" position="attributes">
+                <attribute name="groups">mrs_mrs.mrs_user,mrs_mrs.mrs_doctor</attribute>
+            </page>
         </field>
     </record>
 
