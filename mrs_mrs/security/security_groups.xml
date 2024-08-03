@@ -11,13 +11,16 @@
     <record id="mrs_manager" model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id" ref="module_category_mrs_mrs"/>
+        <field name="implied_ids" eval="[(4, ref('mrs_mrs.mrs_user'))]"/>
     </record>
     <record id="mrs_administrator" model="res.groups">
         <field name="name">Administrator</field>
         <field name="category_id" ref="module_category_mrs_mrs"/>
+        <field name="implied_ids" eval="[(4, ref('mrs_mrs.mrs_manager'))]"/>
     </record>
     <record id="mrs_doctor" model="res.groups">
         <field name="name">Doctor</field>
         <field name="category_id" ref="module_category_mrs_mrs"/>
+        <field name="implied_ids" eval="[(4, ref('mrs_mrs.mrs_user'))]"/>
     </record>
 </odoo>

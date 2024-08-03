@@ -53,13 +53,18 @@ class Visit(models.Model):
 
     @api.constrains("patient_id", "state")
     def _open_visit_per_patient(self):
+        open_states = (VisitStatus.START.name, VisitStatus.DRAFT.name)
         for record in self:
-            if record.patient_id and self.search_count(
-                [
-                    ("id", "!=", record.id),
-                    ("patient_id", "=", record.patient_id.id),
-                    ("state", "in", (VisitStatus.START.name, VisitStatus.DRAFT.name)),
-                ]
+            if (
+                record.state in open_states
+                and record.patient_id
+                and self.search_count(
+                    [
+                        ("id", "!=", record.id),
+                        ("patient_id", "=", record.patient_id.id),
+                        ("state", "in", open_states),
+                    ]
+                )
             ):
                 raise ValidationError(
                     _("Please end the previous (draft or started) visit!")

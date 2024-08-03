@@ -1,4 +1,4 @@
-# pylint: disable=no-member
+# pylint: disable=no-member,protected-access
 from odoo import fields, models
 
 IR_ACT_WINDOW = "ir.actions.act_window"
@@ -30,4 +30,10 @@ class ResPartner(models.Model):
         }
         if self.current_visit:
             action["res_id"] = self.current_visit.id
+        return action
+
+    def action_view_partner_visits(self):
+        action = self.env["ir.actions.actions"]._for_xml_id("mrs_mrs.mrs_visit_action")
+        action["domain"] = [("patient_id", "=", self.id)]
+        action["context"] = {"default_patient_id": self.id}
         return action

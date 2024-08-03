@@ -5,7 +5,7 @@
         <field name="model">mrs.visit</field>
         <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
         <field name="arch" type="xml">
-            <page id="mrs_visit_second_page" position="before">
+            <notebook position="inside">
                 <page id="mrs_vital_biometric_lines" string="Vitals &amp; Biometrics">
                     <group string="Vitals">
                         <field name="vital_ids"
@@ -39,7 +39,7 @@
                         </field>
                     </group>
                 </page>
-            </page>
+            </notebook>
         </field>
     </record>
 </odoo>
