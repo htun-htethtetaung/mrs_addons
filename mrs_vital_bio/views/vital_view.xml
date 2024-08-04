@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_vital_form" model="ir.ui.view">
+        <field name="name">Vital</field>
+        <field name="model">mrs.vital</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="recorded_date" />
+                        </group>
+                        <group>
+                            <field name="temperature" />
+                            <field name="blood_pressure" />
+                            <field name="pulse" />
+                            <field name="respiration_rate" />
+                            <field name="spo_two" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_vital_list" model="ir.ui.view">
+        <field name="name">Vital</field>
+        <field name="model">mrs.vital</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id" />
+                <field name="recorded_date" />
+                <field name="temperature" />
+                <field name="blood_pressure" />
+                <field name="pulse" />
+                <field name="respiration_rate" />
+                <field name="spo_two" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_vital_action" model="ir.actions.act_window">
+        <field name="name">Vital</field>
+        <field name="res_model">mrs.vital</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Vital
+            </p><p>
+            Create Vital
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -17,6 +17,8 @@
         "security/ir.model.access.csv",
         "views/visit_view.xml",
         "views/res_partner_view.xml",
+        "views/biometric_view.xml",
+        "views/vital_view.xml",
     ],
     "application": True,
     "installable": True,

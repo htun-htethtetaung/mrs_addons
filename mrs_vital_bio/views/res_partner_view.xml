@@ -5,8 +5,30 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
         <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button type="object" class="oe_stat_button" icon="fa-heartbeat" name="action_view_partner_vitals"
+                    groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
+                    context="{'default_patient_id': id}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                        </span>
+                        <span class="o_stat_text">Vitals</span>
+                    </div>
+                </button>
+            </div>
+            <div name="button_box" position="inside">
+                <button type="object" class="oe_stat_button" icon="fa-line-chart" name="action_view_partner_biometrics"
+                    groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
+                    context="{'default_patient_id': id}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                        </span>
+                        <span class="o_stat_text">Biometrics</span>
+                    </div>
+                </button>
+            </div>
             <notebook position="inside">
-            <page string="Vitals &amp; Biometrics">
+                <page string="Vitals &amp; Biometrics">
                     <group string="Vital">
                         <field name="vital_ids"
                             readonly="True"

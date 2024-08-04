@@ -32,8 +32,11 @@ class ResPartner(models.Model):
             action["res_id"] = self.current_visit.id
         return action
 
-    def action_view_partner_visits(self):
-        action = self.env["ir.actions.actions"]._for_xml_id("mrs_mrs.mrs_visit_action")
+    def _action_partner_visit(self, view_name: str):
+        action = self.env["ir.actions.actions"]._for_xml_id(view_name)
         action["domain"] = [("patient_id", "=", self.id)]
         action["context"] = {"default_patient_id": self.id}
         return action
+
+    def action_view_partner_visits(self):
+        return self._action_partner_visit("mrs_mrs.mrs_visit_action")

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_biometric_form" model="ir.ui.view">
+        <field name="name">Biometric</field>
+        <field name="model">mrs.biometric</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id" />
+                            <field name="recorded_date" />
+                        </group>
+                        <group>
+                            <field name="weight" />
+                            <field name="height" />
+                            <field name="bmi" />
+                            <field name="muac" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_biometric_list" model="ir.ui.view">
+        <field name="name">Biometric</field>
+        <field name="model">mrs.biometric</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="patient_id" />
+                <field name="recorded_date" />
+                <field name="weight" />
+                <field name="height" />
+                <field name="bmi" />
+                <field name="muac" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_biometric_action" model="ir.actions.act_window">
+        <field name="name">Biometric</field>
+        <field name="res_model">mrs.biometric</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Biometric
+            </p><p>
+            Create Biometric
+            </p>
+        </field>
+    </record>
+</odoo>
