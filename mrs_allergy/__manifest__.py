@@ -21,6 +21,7 @@
         "views/allergy_reaction_view.xml",
         "views/allergy_view.xml",
         "views/visit_allergy_view.xml",
+        "views/res_partner_view.xml",
         "views/menus.xml",
     ],
     "application": True,
