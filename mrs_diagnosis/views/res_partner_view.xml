@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="mrs_patient_allergy_form_view" model="ir.ui.view">
+    <record id="mrs_patient_diagnosis_form_view" model="ir.ui.view">
         <field name="name">Patient</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
-                <button type="object" class="oe_stat_button" name="action_view_partner_allergy"
+                <button type="object" class="oe_stat_button" name="action_view_partner_diagnosis"
                     groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
                     context="{'default_patient_id': id}">
                     <div class="o_form_field o_stat_info">
                         <span class="o_stat_value">
                         </span>
-                        <span class="o_stat_text">Allergies</span>
+                        <span class="o_stat_text">Conditions</span>
                     </div>
                 </button>
             </div>
             <notebook position="inside">
-                <page name="allergy_page" string="Allergies">
-                    <group string="Allergies">
-                        <field name="allergy_ids"
+                <page name="diagnosis_page" string="Conditions">
+                    <group string="Conditions">
+                        <field name="condition_ids"
                             readonly="True"
                             widget="section_and_note_one2many"
                             nolabel="1" colspan="2" context="{'default_patient_id': id}"
                             mode="tree">
                             <tree editable="bottom">
-                                <field name="allergen_id" />
-                                <field name="allergen_detail" />
-                                <field name="allergy_reaction_id" />
-                                <field name="allergy_reaction_detail" />
-                                <field name="reaction_level" />
+                                <field name="diagnosis_id" />
+                                <field name="state" />
+                                <field name="start_date" />
+                                <field name="end_date" />
+                                <field name="active" />
                             </tree>
                         </field>
                     </group>

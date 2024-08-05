@@ -18,6 +18,7 @@
         "views/diagnosis_view.xml",
         "views/visit_diagnosis_view.xml",
         "views/diagnosis_condition_view.xml",
+        "views/res_partner_view.xml",
         "views/menus.xml",
     ],
     "application": True,
