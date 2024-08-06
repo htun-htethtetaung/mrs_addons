@@ -21,7 +21,9 @@ class PrescriptionLab(models.Model):
 
     _description = "Laboratory"
 
-    test_type_id = fields.Many2one(comodel_name="mrs.lab.test.type", string="Test Type")
+    test_type_id = fields.Many2one(
+        comodel_name="mrs.lab.test.type", string="Test Type", required=True
+    )
     lab_ref_no = fields.Char(index=True)
     priority = fields.Selection(selection=list(LabPriority.name_value()))
     note = fields.Text()

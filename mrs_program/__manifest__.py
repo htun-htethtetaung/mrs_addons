@@ -18,6 +18,8 @@
         "views/program_view.xml",
         "views/menus.xml",
         "views/visit_view.xml",
+        "views/visit_program_view.xml",
+        "views/res_partner_view.xml",
     ],
     "application": True,
     "installable": True,

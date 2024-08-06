@@ -28,14 +28,14 @@
                 </button>
             </div>
             <notebook position="inside">
-                <page string="Vitals &amp; Biometrics">
+                <page string="Vitals &amp; Bios">
                     <group string="Vital">
                         <field name="vital_ids"
                             readonly="True"
                             widget="section_and_note_one2many"
                             nolabel="1" colspan="2" context="{'default_patient_id': id}"
                             mode="tree">
-                            <tree editable="bottom">
+                            <tree>
                                 <field name="recorded_date" />
                                 <field name="temperature" />
                                 <field name="blood_pressure" />

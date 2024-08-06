@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_program_form" model="ir.ui.view">
+        <field name="name">Visit Program Line</field>
+        <field name="model">mrs.visit.program</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="program_id" />
+                            <field name="date_start" />
+                        </group>
+                        <group>
+                            <field name="date_end" />
+                            <field name="mrs_location_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_program_list" model="ir.ui.view">
+        <field name="name">Visit Program Line</field>
+        <field name="model">mrs.visit.program</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="program_id" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <field name="mrs_location_id" />
+            </tree>
+        </field>
+    </record>
+    <record id="mrs_visit_program_action" model="ir.actions.act_window">
+        <field name="name">Visit Program Line</field>
+        <field name="res_model">mrs.visit.program</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Program
+            </p><p>
+            Create Program
+            </p>
+        </field>
+    </record>
+</odoo>

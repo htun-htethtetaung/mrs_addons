@@ -24,7 +24,7 @@
                             widget="section_and_note_one2many"
                             nolabel="1" colspan="2" context="{'default_patient_id': id}"
                             mode="tree">
-                            <tree editable="bottom">
+                            <tree>
                                 <field name="test_type_id" />
                                 <field name="lab_ref_no" />
                                 <field name="priority" />

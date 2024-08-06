@@ -24,7 +24,7 @@
                             widget="section_and_note_one2many"
                             nolabel="1" colspan="2" context="{'default_patient_id': id}"
                             mode="tree">
-                            <tree editable="bottom">
+                            <tree>
                                 <field name="allergen_id" />
                                 <field name="allergen_detail" />
                                 <field name="allergy_reaction_id" />
