@@ -5,7 +5,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="mrs_mrs.mrs_patient_base_form_view" />
         <field name="arch" type="xml">
-            <button name="action_view_partner_visits" position="after">
+            <button name="action_view_partner_visits" position="before">
                 <button type="object" class="oe_stat_button" name="action_view_partner_prescription"
                     groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
                     context="{'default_patient_id': id}">
@@ -16,7 +16,7 @@
                     </div>
                 </button>
             </button>
-            <page name="medical_histories" position="after">
+            <page name="medical_histories" position="before">
                 <page name="prescription_page" string="Prescriptions" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor">
                     <group string="Prescriptions">
                         <field name="prescription_ids"
