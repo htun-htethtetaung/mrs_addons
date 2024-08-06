@@ -29,7 +29,9 @@
             <tree>
                 <field name="immunization_id" />
                 <field name="vaccination_date" />
-                            <field name="expire_date" />
+                <field name="dose_number" />
+                <field name="manufacturer" />
+                <field name="expire_date" />
             </tree>
         </field>
     </record>

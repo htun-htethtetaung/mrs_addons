@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mrs_patient_lab_form_view" model="ir.ui.view">
+        <field name="name">Patient</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button type="object" class="oe_stat_button" name="action_view_partner_lab"
+                    groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
+                    context="{'default_patient_id': id}">
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                        </span>
+                        <span class="o_stat_text">Labs</span>
+                    </div>
+                </button>
+            </div>
+            <notebook position="inside">
+                <page name="lab_page" string="Labs">
+                    <group string="Labs">
+                        <field name="lab_ids"
+                            readonly="True"
+                            widget="section_and_note_one2many"
+                            nolabel="1" colspan="2" context="{'default_patient_id': id}"
+                            mode="tree">
+                            <tree editable="bottom">
+                                <field name="test_type_id" />
+                                <field name="lab_ref_no" />
+                                <field name="priority" />
+                                <field name="note" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

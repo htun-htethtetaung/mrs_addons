@@ -56,6 +56,12 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="product_id" />
+                <field name="quantity" />
+                <field name="uom_id" />
+                <field name="dose_free_text" />
+                <field name="frequency_qty" />
+                <button name="unknown" string="Per" disabled="1"/>
+                <field name="frequency_uom_id" />
             </tree>
         </field>
     </record>

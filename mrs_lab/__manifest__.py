@@ -18,6 +18,7 @@
         "views/lab_test_type_view.xml",
         "views/lab_view.xml",
         "views/visit_lab_view.xml",
+        "views/res_partner_view.xml",
         "views/menus.xml",
     ],
     "application": True,

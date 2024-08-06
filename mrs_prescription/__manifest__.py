@@ -17,6 +17,7 @@
         "security/ir.model.access.csv",
         "views/prescription_order_view.xml",
         "views/visit_prescription_view.xml",
+        "views/res_partner_view.xml",
     ],
     "application": True,
     "installable": True,
