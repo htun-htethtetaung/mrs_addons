@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_mrs_visit_calendar_event_form">
+        <field name="name">mrs.visit.prescription</field>
+        <field name="model">mrs.visit</field>
+        <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
+        <field name="arch" type="xml">
+            <field name="patient_id" position="after">
+                <field name="calendar_event_id" invisible="True" />
+            </field>
+        </field>
+    </record>
+</odoo>

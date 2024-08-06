@@ -11,9 +11,9 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
     "support": "lwinmaungmaung@cosmosmm.com",
-    "depends": ["mrs_mrs", "appointment"],
+    "depends": ["mrs_mrs", "calendar", "appointment"],
     "demo": [],
-    "data": [],
+    "data": ["views/calendar_event_view.xml", "views/visit_view.xml"],
     "application": True,
     "installable": True,
 }

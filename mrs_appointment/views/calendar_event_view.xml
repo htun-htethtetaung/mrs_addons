@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_calendar_event_form" model="ir.ui.view">
+        <field name="name">Calendar Event</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form" />
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <button name="action_go_to_current_visit" type="object" string="Start Visit" class="oe_highlight" invisible="not patient_id or ( patient_id and current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="Continue Visit" class="oe_highlight" invisible="not patient_id or ( patient_id and not current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                </header>
+            </sheet>
+            <field name="current_status" position="before">
+                <field name="patient_id" />
+                <field name="current_visit" invisible="True" />
+            </field>
+        </field>
+    </record>
+</odoo>
