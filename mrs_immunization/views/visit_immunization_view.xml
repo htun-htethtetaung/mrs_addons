@@ -28,6 +28,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="immunization_id" />
+                <field name="vaccination_date" />
+                            <field name="expire_date" />
             </tree>
         </field>
     </record>

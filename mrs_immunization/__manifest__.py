@@ -18,6 +18,7 @@
         "views/immunization_view.xml",
         "views/visit_immunization_view.xml",
         "views/visit_view.xml",
+        "views/res_partner_view.xml",
         "views/menus.xml",
     ],
     "application": True,
