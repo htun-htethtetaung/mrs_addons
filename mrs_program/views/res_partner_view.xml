@@ -3,9 +3,9 @@
     <record id="mrs_patient_program_form_view" model="ir.ui.view">
         <field name="name">Patient</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
+        <field name="inherit_id" ref="mrs_mrs.mrs_patient_base_form_view" />
         <field name="arch" type="xml">
-            <div name="button_box" position="inside">
+            <button name="action_view_partner_visits" position="after">
                 <button type="object" class="oe_stat_button" name="action_view_partner_program"
                     groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
                     context="{'default_patient_id': id}">
@@ -15,7 +15,7 @@
                         <span class="o_stat_text">Program</span>
                     </div>
                 </button>
-            </div>
+            </button>
 
             <page name="patient_detail" position="inside">
                 <group string="Program">

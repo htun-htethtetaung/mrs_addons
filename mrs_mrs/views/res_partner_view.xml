@@ -30,7 +30,7 @@
                     <button name="action_go_to_current_visit" type="object" invisible="not current_visit" string="Continue Visit" class="oe_highlight" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
                 </header>
             </xpath>
-            <notebook position="inside">
+            <page name="patient_detail" position="after">
                 <page name="medical_histories" string="Visits" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group>
                         <field 
@@ -48,7 +48,7 @@
                         </field>
                     </group>
                 </page>
-            </notebook>
+            </page>
         </field>
     </record>
 
