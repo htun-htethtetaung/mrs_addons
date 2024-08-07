@@ -17,4 +17,27 @@
             </field>
         </field>
     </record>
+    <record id="view_mrs_calendar_gantt_event_form" model="ir.ui.view">
+        <field name="name">Calendar Event Gantt</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="appointment.calendar_event_view_form_gantt_booking" />
+        <field name="arch" type="xml">
+            <field name="partner_ids" position="before">
+                <field name="is_patient_appointment" invisible="True" />
+                <field name="patient_id" invisible="not is_patient_appointment" placeholder="Choose a patient" required="is_patient_appointment" />
+            </field>
+        </field>
+    </record>
+    <record id="view_mrs_calendar_quick_event_form" model="ir.ui.view">
+        <field name="name">Calendar Event Gantt</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form_quick_create" />
+        <field name="arch" type="xml">
+            <field name="start_date" position="before">
+                <field name="is_patient_appointment" invisible="True" />
+                <field name="patient_id" placeholder="Choose a patient" />
+                <field name="appointment_type_id" />
+            </field>
+        </field>
+    </record>
 </odoo>

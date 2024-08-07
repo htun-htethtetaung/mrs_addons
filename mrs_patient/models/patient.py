@@ -32,7 +32,7 @@ class MrsPatient(models.Model):
 
     _inherit = "res.partner"
 
-    is_patient = fields.Boolean(default=False)
+    is_patient = fields.Boolean(default=False, index=True)
 
     date_of_birth = fields.Date(string="Date of Birth")
     gender = fields.Selection(

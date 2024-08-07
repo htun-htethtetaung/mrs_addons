@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Add Record Rule -->
+    <record id="patient_mrs_doctor" model="ir.rule">
+        <field name="name">Patient: Doctor</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">[('doctor_ids', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('mrs_doctor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+    <record id="patient_mrs_user" model="ir.rule">
+        <field name="name">Patient: Mrs User</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('mrs_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="False"/>
+    </record>
+    <record id="patient_mrs_manager" model="ir.rule">
+        <field name="name">Patient: Mrs User</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('mrs_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+    <record id="contact_all" model="ir.rule">
+        <field name="name">Contact: All</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="domain_force">['|', ('is_patient', '=', False), ('user_ids', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+</odoo>

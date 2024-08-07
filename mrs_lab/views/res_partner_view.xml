@@ -3,10 +3,10 @@
     <record id="mrs_patient_lab_form_view" model="ir.ui.view">
         <field name="name">Patient</field>
         <field name="model">res.partner</field>
-        <field name="inherit_id" ref="mrs_mrs.mrs_patient_base_form_view" />
+        <field name="inherit_id" ref="mrs_mrs.mrs_patient_patient_form_view" />
         <field name="arch" type="xml">
             <button name="action_view_partner_visits" position="after">
-                <button type="object" class="oe_stat_button" name="action_view_partner_lab"
+                <button type="object" class="oe_stat_button" icon="fa-info" name="action_view_partner_lab"
                     groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
                     context="{'default_patient_id': id}">
                     <div class="o_form_field o_stat_info">

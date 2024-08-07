@@ -15,6 +15,7 @@
     "demo": [],
     "data": [
         "security/security_groups.xml",
+        "security/patient_record_rules.xml",
         "security/ir.model.access.csv",
         "views/mrs_location_view.xml",
         "views/visit_view.xml",

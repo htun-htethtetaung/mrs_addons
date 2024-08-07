@@ -11,6 +11,13 @@ class ResPartner(models.Model):
     current_visit = fields.Many2one(
         comodel_name="mrs.visit", compute="_compute_is_active_visit"
     )
+    doctor_ids = fields.Many2many(
+        comodel_name="res.users",
+        relation="patient_doctor_relation",
+        column1="patient_id",
+        column2="doctor_id",
+        index=True,
+    )
 
     def _compute_is_active_visit(self):
         for record in self:
@@ -41,3 +48,12 @@ class ResPartner(models.Model):
 
     def action_view_partner_visits(self):
         return self._action_partner_visit("mrs_mrs.mrs_visit_action")
+
+    def action_go_to_context(self):
+        return {
+            "type": IR_ACT_WINDOW,
+            "view_type": "form",
+            "view_mode": "form",
+            "res_model": self._name,
+            "res_id": self.id,
+        }
