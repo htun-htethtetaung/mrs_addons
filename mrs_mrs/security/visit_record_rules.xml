@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Add Record Rule -->
+    <record id="visit_mrs_doctor" model="ir.rule">
+        <field name="name">Visit: Doctor</field>
+        <field name="model_id" ref="mrs_mrs.model_mrs_visit"/>
+        <field name="domain_force">[('patient_id.doctor_ids', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('mrs_doctor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+    <record id="visit_mrs_user" model="ir.rule">
+        <field name="name">Visit: Mrs User</field>
+        <field name="model_id" ref="mrs_mrs.model_mrs_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('mrs_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="False"/>
+    </record>
+    <record id="visit_mrs_manager" model="ir.rule">
+        <field name="name">Visit: Mrs User</field>
+        <field name="model_id" ref="mrs_mrs.model_mrs_visit"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('mrs_manager'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="True"/>
+    </record>
+</odoo>
