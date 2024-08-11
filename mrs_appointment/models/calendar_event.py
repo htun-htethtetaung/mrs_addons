@@ -17,7 +17,7 @@ class CalendarEvent(models.Model):
     def _onchange_patient_id(self):
         for record in self:
             if record.patient_id:
-                record.partner_ids = [(6, 0, [record.patient_id.id])]
+                record.partner_ids = [(4, record.patient_id.id)]
 
     def action_go_to_current_visit(self):
         self.ensure_one()
