@@ -31,7 +31,7 @@ class Visit(models.Model):
         tracking=True,
         domain="[('is_patient', '=', True)]",
     )
-    name = fields.Char(related="patient_id.name")
+    name = fields.Char(compute="_compute_name", store=True)
     doctor_id = fields.Many2one(
         comodel_name="res.users", default=lambda x: x.env.user.id
     )
@@ -50,6 +50,17 @@ class Visit(models.Model):
     mrs_location_id = fields.Many2one(comodel_name="mrs.location")
 
     note = fields.Text(tracking=True)
+
+    @api.depends("patient_id")
+    def _compute_name(self):
+        for record in self:
+            if record.patient_id:
+                count = self.search_count(
+                    [("id", "<", record.id), ("patient_id", "=", record.patient_id.id)]
+                )
+                record.name = f"{record.patient_id.name} - {count+1}"
+            else:
+                record.name = "New"
 
     @api.constrains("patient_id", "state")
     def _open_visit_per_patient(self):
