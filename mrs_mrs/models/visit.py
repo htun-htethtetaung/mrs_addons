@@ -55,9 +55,10 @@ class Visit(models.Model):
     def _compute_name(self):
         for record in self:
             if record.patient_id:
-                count = self.search_count(
-                    [("id", "<", record.id), ("patient_id", "=", record.patient_id.id)]
-                )
+                domain = [("patient_id", "=", record.patient_id.id)]
+                if isinstance(record.id, int):
+                    domain.append(("id", "<", record.id))
+                count = self.search_count(domain)
                 record.name = f"{record.patient_id.name} - {count+1}"
             else:
                 record.name = "New"
