@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="seq_mrs_visit_code" model="ir.sequence">
+        <field name="name">Mrs Visit</field>
+        <field name="code">mrs.visit</field>
+        <field name="prefix">V/%(y)s/%(month)s/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>

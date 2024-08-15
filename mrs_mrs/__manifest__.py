@@ -18,6 +18,7 @@
         "security/patient_record_rules.xml",
         "security/visit_record_rules.xml",
         "security/ir.model.access.csv",
+        "data/visit_sequence.xml",
         "views/mrs_location_view.xml",
         "views/visit_view.xml",
         "views/res_partner_view.xml",

@@ -31,7 +31,15 @@ class Visit(models.Model):
         tracking=True,
         domain="[('is_patient', '=', True)]",
     )
-    name = fields.Char(compute="_compute_name", store=True)
+    name = fields.Char(
+        string="Visit ID",
+        copy=False,
+        required=True,
+        readonly=True,
+        size=13,
+        index=True,
+        default=lambda self: "New",
+    )
     doctor_id = fields.Many2one(
         comodel_name="res.users", default=lambda x: x.env.user.id
     )
@@ -46,22 +54,11 @@ class Visit(models.Model):
     start_date = fields.Datetime(
         default=lambda x: datetime.now(), index=True, tracking=True
     )
+    backdate = fields.Boolean(default=False)
     end_date = fields.Datetime(readonly=True)
     mrs_location_id = fields.Many2one(comodel_name="mrs.location")
 
     note = fields.Text(tracking=True)
-
-    @api.depends("patient_id")
-    def _compute_name(self):
-        for record in self:
-            if record.patient_id:
-                domain = [("patient_id", "=", record.patient_id.id)]
-                if isinstance(record.id, int):
-                    domain.append(("id", "<", record.id))
-                count = self.search_count(domain)
-                record.name = f"{record.patient_id.name} - {count+1}"
-            else:
-                record.name = "New"
 
     @api.constrains("patient_id", "state")
     def _open_visit_per_patient(self):
@@ -114,3 +111,12 @@ class Visit(models.Model):
             ]
         )
         return record[0] if record else False
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("name", "New") == "New":
+                vals["name"] = (
+                    self.env["ir.sequence"].next_by_code("mrs.visit") or "New"
+                )
+        return super().create(vals_list)
