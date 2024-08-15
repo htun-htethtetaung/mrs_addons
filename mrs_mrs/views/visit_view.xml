@@ -26,7 +26,7 @@
                 </header>
                 <sheet>
                     <h1>
-                        <field name="patient_id" readonly="state=='ENDED'" placeholder="Patient" />
+                        <field name="patient_id" readonly="state=='ENDED'" placeholder="Patient" context="{'form_view_ref': 'mrs_patient.mrs_patient_view_form'}" />
                     </h1>
                     <group>
                         <group string="Visit Detail">
