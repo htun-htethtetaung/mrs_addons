@@ -60,10 +60,19 @@ class MrsPatient(models.Model):
         comodel_name="patient.insurance", inverse_name="patient_id"
     )
 
+    def write(self, vals):
+        is_patient = vals.get("is_patient")
+        res = super().write(vals=vals)
+        if is_patient and (self.patient_code == "New" or not self.patient_code):
+            self.patient_code = (
+                self.env["ir.sequence"].next_by_code("mrs.patient") or "New"
+            )
+        return res
+
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
-            if vals.get("patient_code", "New") == "New":
+            if vals.get("patient_code", "New") == "New" and vals.get("is_patient"):
                 vals["patient_code"] = (
                     self.env["ir.sequence"].next_by_code("mrs.patient") or "New"
                 )
