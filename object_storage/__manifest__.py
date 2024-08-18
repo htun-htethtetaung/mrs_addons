@@ -15,6 +15,7 @@
     "demo": [],
     "data": [
         "security/ir.model.access.csv",
+        "data/os_attachment_gc_cron.xml",
         "data/os_attachment_type_data.xml",
         "views/os_attachment_view.xml",
     ],

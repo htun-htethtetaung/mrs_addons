@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_schedule_os_gc" model="ir.cron">
+        <field name="name">Object Storage Garbage Collector</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="DateTime.now().replace(hour=0, minute=5).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_os_attachment_gc"/>
+        <field name="code">model.schedule_gc()</field>
+        <field name="state">code</field>
+        <field name="active" eval="True" />
+    </record>
+</odoo>

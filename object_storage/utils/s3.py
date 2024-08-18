@@ -1,5 +1,6 @@
 import logging
 import hashlib
+import base64
 import boto3
 from botocore.exceptions import ClientError
 from .env import (
@@ -84,7 +85,12 @@ class S3ContextMgr:
         if not key:
             key = hashlib.sha1(data or b"").hexdigest()
         metadata = {} if metadata is None else metadata
-        metadata.update({"filename": filename, "key": key})
+        metadata.update(
+            {
+                "filename": base64.b64encode(filename.encode("utf-8")).decode("utf-8"),
+                "key": key,
+            }
+        )
         with self as s3_mgr:
             s3_mgr.client.put_object(
                 Bucket=bucket_name,
