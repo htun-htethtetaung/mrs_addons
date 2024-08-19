@@ -7,7 +7,9 @@ from ...mrs_mrs.models.visit import VisitStatus
 class CalendarEvent(models.Model):
     _inherit = "calendar.event"
 
-    patient_id = fields.Many2one(comodel_name="res.partner", index=True)
+    patient_id = fields.Many2one(
+        comodel_name="res.partner", index=True, domain="[('is_patient', '=', True)]"
+    )
     current_visit = fields.Many2one(
         comodel_name="mrs.visit", related="patient_id.current_visit"
     )
