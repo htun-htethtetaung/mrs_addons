@@ -7,8 +7,11 @@
         <field name="arch" type="xml">
             <sheet position="before">
                 <header>
-                    <button name="action_go_to_current_visit" type="object" string="Start Visit" class="oe_highlight" invisible="not patient_id or ( patient_id and current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
-                    <button name="action_go_to_current_visit" type="object" string="Continue Visit" class="oe_highlight" invisible="not patient_id or ( patient_id and not current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <field name="is_appointment_done" invisible="True" />
+                    <field name="visit_id" invisible="True" />
+                    <button name="action_go_to_current_visit" type="object" string="Start Visit" class="oe_highlight" invisible="is_appointment_done or not patient_id or ( patient_id and current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="Continue Visit" class="oe_highlight" invisible="is_appointment_done or not patient_id or ( patient_id and not current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="View Visit" class="oe_highlight" invisible="not (visit_id and is_appointment_done)" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
                 </header>
             </sheet>
             <field name="current_status" position="before">

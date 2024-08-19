@@ -1,7 +1,10 @@
+# pylint: disable=no-member
 from datetime import datetime
 from enum import Enum
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
+
+IR_ACT_WINDOW = "ir.actions.act_window"
 
 
 class VisitStatus(Enum):
@@ -120,3 +123,16 @@ class Visit(models.Model):
                     self.env["ir.sequence"].next_by_code("mrs.visit") or "New"
                 )
         return super().create(vals_list)
+
+    def action_go_to_visit(self):
+        self.ensure_one()
+        action = {
+            "type": IR_ACT_WINDOW,
+            "view_type": "form",
+            "res_model": "mrs.visit",
+            "view_mode": "form",
+            "context": self._context,
+            "domain": [("id", "=", self.id)],
+            "res_id": self.id,
+        }
+        return action

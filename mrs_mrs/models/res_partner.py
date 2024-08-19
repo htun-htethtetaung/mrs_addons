@@ -49,7 +49,7 @@ class ResPartner(models.Model):
     def action_view_partner_visits(self):
         return self._action_partner_visit("mrs_mrs.mrs_visit_action")
 
-    def action_go_to_context(self):
+    def action_go_to_contact(self):
         return {
             "type": IR_ACT_WINDOW,
             "view_type": "form",

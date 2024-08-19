@@ -32,7 +32,7 @@
                     <field name="current_visit" invisible="1" />
                     <button name="action_go_to_current_visit" type="object" invisible="current_visit" string="Start Visit" class="oe_highlight" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
                     <button name="action_go_to_current_visit" type="object" invisible="not current_visit" string="Continue Visit" class="oe_highlight" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
-                    <button name="action_go_to_context" type="object" string="Contact Info" />
+                    <button name="action_go_to_contact" type="object" string="Contact Info" />
                 </header>
             </xpath>
             <page name="patient_detail" position="after">
