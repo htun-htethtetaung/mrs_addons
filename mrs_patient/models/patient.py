@@ -60,6 +60,22 @@ class MrsPatient(models.Model):
         comodel_name="patient.insurance", inverse_name="patient_id"
     )
 
+    @api.depends("name", "patient_code")
+    def _compute_display_name(self):
+        for record in self:
+            record.display_name = (
+                f"{record.name}[{record.patient_code}]"
+                if record.patient_code and record.patient_code != "New"
+                else record.name
+            )
+
+    # pylint: disable=too-many-arguments
+    @api.model
+    def _name_search(self, name, domain=None, operator="ilike", limit=None, order=None):
+        domain = domain or []
+        domain.extend(["|", ("name", operator, name), ("patient_code", operator, name)])
+        return self._search(domain, limit=limit, order=order)
+
     def write(self, vals):
         is_patient = vals.get("is_patient")
         res = super().write(vals=vals)
