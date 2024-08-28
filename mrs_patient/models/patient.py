@@ -64,7 +64,7 @@ class MrsPatient(models.Model):
     def _compute_display_name(self):
         for record in self:
             record.display_name = (
-                f"{record.name}[{record.patient_code}]"
+                f"{record.name} [{record.patient_code}]"
                 if record.patient_code and record.patient_code != "New"
                 else record.name
             )
