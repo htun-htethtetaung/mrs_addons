@@ -10,7 +10,7 @@
 }
 
 .o_form_status_indicator_buttons button.o_form_button_cancel .fa-undo::after{
-    content: " Discard";
+    content: " Discard Changes";
     color: red;
     font-size: 1rem;
     margin-right: 3px;

@@ -49,7 +49,6 @@
                             <field name="mobile" widget="phone"/>
                             <field name="user_ids" invisible="1"/>
                             <field name="email" widget="email" context="{'gravatar_image': True}" required="user_ids"/>
-                            <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
                             <field name="title" options='{"no_open": True}' placeholder="e.g. Mister"
                                 invisible="is_company"/>
                             <field name="active_lang_count" invisible="1"/>

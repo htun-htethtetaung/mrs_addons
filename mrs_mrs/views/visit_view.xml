@@ -4,7 +4,7 @@
         <field name="name">Medical History</field>
         <field name="model">mrs.visit</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="false" duplicate="0">
                 <header>
                     <button name="action_start"
                         type="object"
@@ -69,7 +69,7 @@
         <field name="name">Medical History</field>
         <field name="model">mrs.visit</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree duplicate="0">
                 <field name="name" />
                 <field name="patient_id" />
                 <field name="doctor_id" />

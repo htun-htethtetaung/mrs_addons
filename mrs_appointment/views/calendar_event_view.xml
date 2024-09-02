@@ -9,13 +9,21 @@
                 <header>
                     <field name="is_appointment_done" invisible="True" />
                     <field name="visit_id" invisible="True" />
-                    <button name="action_go_to_current_visit" type="object" string="Start Visit" class="oe_highlight" invisible="is_appointment_done or not patient_id or ( patient_id and current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
-                    <button name="action_go_to_current_visit" type="object" string="Continue Visit" class="oe_highlight" invisible="is_appointment_done or not patient_id or ( patient_id and not current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
-                    <button name="action_go_to_current_visit" type="object" string="View Visit" class="oe_highlight" invisible="not (visit_id and is_appointment_done)" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <field name="state" invisible="1" />
+                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" invisible="not (state == 'DRAFT')" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="Start Visit" class="oe_highlight" invisible="not (state == 'CONFIRM') or is_appointment_done or not patient_id or ( patient_id and current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="Continue Visit" class="oe_highlight" invisible="not (state == 'CONFIRM') or is_appointment_done or not patient_id or ( patient_id and not current_visit )" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_go_to_current_visit" type="object" string="View Visit" class="oe_highlight" invisible="not (state == 'CONFIRM') or not (visit_id and is_appointment_done)" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_cancel" type="object" string="Cancel" class="" invisible="not (state == 'CONFIRM') or is_appointment_done" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <button name="action_draft" type="object" string="Set to Draft" class="" invisible="state not in ('CONFIRM', 'CANCEL')" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor" />
+                    <field name="state" widget="statusbar" statusbar_visible="DRAFT,CONFIRM,CANCEL"/>
                 </header>
             </sheet>
+            <form position="attributes">
+                <attribute name="create">false</attribute>
+            </form>
             <field name="current_status" position="before">
-                <field name="patient_id" context="{'form_view_ref': 'mrs_patient.mrs_patient_view_form'}" />
+                <field name="patient_id" context="{'form_view_ref': 'mrs_patient.mrs_patient_view_form'}" readonly="state == 'CONFIRM'" />
                 <field name="current_visit" invisible="True" />
             </field>
         </field>
