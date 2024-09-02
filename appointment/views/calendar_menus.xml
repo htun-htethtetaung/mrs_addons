@@ -5,7 +5,7 @@
     <menuitem
         id="appointment_menu_calendar"
         parent="calendar.mail_menu_calendar"
-        name="Appointments"
+        name="Manage My Schedules"
         action="appointment_type_action"/>
 
     <!-- Calendar's reporting menu-->
