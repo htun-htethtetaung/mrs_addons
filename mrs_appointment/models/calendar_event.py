@@ -53,32 +53,44 @@ class CalendarEvent(models.Model):
             if record.patient_id:
                 record.partner_ids = [(4, record.patient_id.id)]
 
+    def write(self, vals):
+        for record in self:
+            if record.state == CalendarEventState.CONFIRM.name and (
+                "start" in vals or "stop" in vals
+            ):
+                raise ValidationError(
+                    _("Appointment can't be changed after it is confirmed.")
+                )
+        return super().write(vals)
+
     def create_new_visit(self):
         self.ensure_one()
         return self.env["mrs.visit"].create(
             {"patient_id": self.patient_id.id, "calendar_event_id": self.id}
         )
 
-    def _validate_state(self, states: List[CalendarEventState]):
+    def _validate_state(self, states: List[str]):
         self.ensure_one()
         if self.state not in states:
             raise ValidationError(
                 _(
-                    f"Meeting is not on '{','.join([state.value for state in states])}'"
+                    f"Meeting is not on '{','.join(states)}'"
                     "State, Please refresh the page to know updated state."
                 )
             )
 
     def action_confirm(self):
-        self._validate_state(CalendarEventState.DRAFT)
+        self._validate_state([CalendarEventState.DRAFT.name])
         self.state = CalendarEventState.CONFIRM.name
 
     def action_cancel(self):
-        self._validate_state(CalendarEventState.CONFIRM)
+        self._validate_state([CalendarEventState.CONFIRM.name])
         self.state = CalendarEventState.CANCEL.name
 
     def action_draft(self):
-        self._validate_state(CalendarEventState.CANCEL)
+        self._validate_state(
+            [CalendarEventState.CANCEL.name, CalendarEventState.CONFIRM.name]
+        )
         self.state = CalendarEventState.DRAFT.name
 
     def action_go_to_current_visit(self):
