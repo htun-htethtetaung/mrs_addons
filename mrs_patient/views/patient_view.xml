@@ -45,6 +45,7 @@
                             </div>
                         </group>
                         <group string="Personal Info">
+                            <field name="active" invisible="1" />
                             <field name="phone" widget="phone"/>
                             <field name="mobile" widget="phone"/>
                             <field name="user_ids" invisible="1"/>

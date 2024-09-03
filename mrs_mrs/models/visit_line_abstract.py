@@ -14,3 +14,4 @@ class VisitLine(models.AbstractModel):
         readonly=False,
         related="visit_id.patient_id",
     )
+    active = fields.Boolean(default=True, index=True)

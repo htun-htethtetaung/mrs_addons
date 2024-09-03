@@ -30,6 +30,7 @@
                     </h1>
                     <group>
                         <group string="Visit Detail">
+                            <field name="active" invisible="1" />
                             <field name="name" />
                             <field name="state" invisible="1" />
                             <field name="is_external_doctor"    readonly="state=='ENDED'" />

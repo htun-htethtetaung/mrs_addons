@@ -62,6 +62,7 @@ class Visit(models.Model):
     mrs_location_id = fields.Many2one(comodel_name="mrs.location")
 
     note = fields.Text(tracking=True)
+    active = fields.Boolean(default=True, index=True)
 
     @api.constrains("patient_id", "state")
     def _open_visit_per_patient(self):
