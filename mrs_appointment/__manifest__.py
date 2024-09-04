@@ -14,6 +14,7 @@
     "depends": ["mrs_mrs", "calendar", "appointment"],
     "demo": [],
     "data": [
+        "security/security_groups.xml",
         "views/calendar_event_view.xml",
         "views/visit_view.xml",
         "views/appointment_type_view.xml",
