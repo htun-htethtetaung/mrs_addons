@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mrs_doctor.access_partner_academic,access_partner_academic,mrs_doctor.model_partner_academic,base.group_user,1,0,0,0
+mrs_doctor.access_partner_professional,access_partner_professional,mrs_doctor.model_partner_professional,base.group_user,1,0,0,0
+mrs_doctor.access_mrs_doctor_speciality,access_mrs_doctor_speciality,mrs_doctor.model_mrs_doctor_speciality,base.group_user,1,0,0,0

@@ -11,7 +11,7 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
     "support": "lwinmaungmaung@cosmosmm.com",
-    "depends": ["base", "product", "mrs_patient", "object_storage"],
+    "depends": ["base", "product", "mrs_patient", "mrs_doctor", "object_storage"],
     "demo": [],
     "data": [
         "security/security_groups.xml",
