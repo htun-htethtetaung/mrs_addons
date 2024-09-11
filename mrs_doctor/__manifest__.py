@@ -11,9 +11,15 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "support": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
-    "depends": ["base"],
+    "depends": ["base", "mail"],
     "demo": [],
-    "data": ["security/ir.model.access.csv"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/speciality_view.xml",
+        "views/academic_view.xml",
+        "views/professional_view.xml",
+        "views/doctor_view.xml",
+    ],
     "application": True,
     "installable": True,
 }

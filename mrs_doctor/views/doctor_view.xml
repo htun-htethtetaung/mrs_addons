@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_doctor_form" model="ir.ui.view">
+        <field name="name">Doctor</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="avatar_128" invisible="1"/>
+                    <field name="city" invisible="1"/>
+                    <field name="comment" invisible="1"/>
+                    <field name="country_id" invisible="1"/>
+                    <field name="is_company" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="state_id" invisible="1"/>
+                    <field name="street" invisible="1"/>
+                    <field name="street2" invisible="1"/>
+                    <field name="title" invisible="1"/>
+                    <field name="type" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="website" invisible="1"/>
+                    <field name="zip" invisible="1"/>
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
+                    <h1>
+                        <field id="individual" options="{'line_breaks': False}" widget="text" class="text-break" name="name" default_focus="1" placeholder="e.g. Brandom Freeman"/>
+                    </h1>
+                    <group>
+                        <group string="Address">
+                            <span class="o_form_label o_td_label" name="address_name">
+                                <field name="type" invisible="is_company" readonly="user_ids" required="not is_company" class="fw-bold"/>
+                                <b invisible="not is_company">Address</b>
+                            </span>
+                            <div class="o_address_format">
+                                <field name="street" placeholder="Street..." class="o_address_street" />
+                                <field name="street2" placeholder="Street 2..." class="o_address_street" />
+                                <field name="city" placeholder="City" class="o_address_city" />
+                                <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}"
+                                 context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}"/>
+                                <field name="zip" placeholder="ZIP" class="o_address_zip" />
+                                <div name="partner_address_country" class="d-flex justify-content-between">
+                                    <field name="country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}' />
+                                </div>
+                            </div>
+                        </group>
+                        <group string="Personal Info">
+                            <field name="active" invisible="1" />
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="user_ids" invisible="1"/>
+                            <field name="email" widget="email" context="{'gravatar_image': True}" required="user_ids"/>
+                            <field name="title" options='{"no_open": True}' placeholder="e.g. Mister"
+                                invisible="is_company"/>
+                            <field name="active_lang_count" invisible="1"/>
+                            <field name="lang" invisible="active_lang_count &lt;= 1"/>
+                            <field name="category_id" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"
+                                   placeholder='e.g. "B2B", "VIP", "Consulting", ...'/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="professionals" string="Professional Info">
+                            <group>
+                                <group>
+                                    <field name="languages" widget="many2many_tags" />
+                                    <field name="speciality_ids" widget="many2many_tags" />
+                                    <field name="expretise" />
+                                </group>
+                                <group>
+                                    <field name="reg_country" required="True" />
+                                    <field name="sub_speciality" />
+                                </group>
+                                <field name="professional_ids" nolabel="1" colspan="1" context="{'default_partner_id': id}">
+                                    <tree string="Professionals">
+                                        <field name="name"/>
+                                        <field name="position"/>
+                                        <field name="start"/>
+                                        <field name="stop"/>
+                                        <field name="current"/>
+                                    </tree>
+                                </field>
+                                <field name="academic_ids" nolabel="1" colspan="2" context="{'default_partner_id': id}">
+                                    <tree string="Academic Info">
+                                        <field name="name"/>
+                                        <field name="position"/>
+                                        <field name="start"/>
+                                        <field name="stop"/>
+                                        <field name="current"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Attachment preview -->
+                <div class="o_attachment_preview" />
+                <!-- Chatter -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_doctor_list" model="ir.ui.view">
+        <field name="name">Doctor</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="languages" widget="many2many_tags"/>
+                <field name="speciality_ids" widget="many2many_tags"/>
+                <field name="expretise" />
+            </tree>
+        </field>
+    </record>
+</odoo>

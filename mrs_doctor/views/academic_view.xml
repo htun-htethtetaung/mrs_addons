@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_mrs_doctor_academic_form" model="ir.ui.view">
+        <field name="name">Academic</field>
+        <field name="model">partner.academic</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" invisible="1" />
+                            <field name="name" required="1" />
+                            <field name="position" required="1" />
+                            <field name="detail" />
+                        </group>
+                        <group>
+                            <field name="start" required="1" />
+                            <field name="current" />
+                            <field name="stop" required="not current" invisible="current" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mrs_doctor_academic_list" model="ir.ui.view">
+        <field name="name">Academic</field>
+        <field name="model">partner.academic</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="position"/>
+                <field name="start"/>
+                <field name="stop"/>
+                <field name="current"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
