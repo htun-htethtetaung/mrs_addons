@@ -4,7 +4,7 @@
         <field name="name">Doctor</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <form>
+            <form create="0">
                 <sheet>
                     <field name="avatar_128" invisible="1"/>
                     <field name="city" invisible="1"/>
@@ -62,11 +62,11 @@
                                 <group>
                                     <field name="languages" widget="many2many_tags" />
                                     <field name="speciality_ids" widget="many2many_tags" />
-                                    <field name="expretise" />
+                                    <field name="sub_speciality" />
                                 </group>
                                 <group>
                                     <field name="reg_country" required="True" />
-                                    <field name="sub_speciality" />
+                                    <field name="expretise" />
                                 </group>
                                 <field name="professional_ids" nolabel="1" colspan="1" context="{'default_partner_id': id}">
                                     <tree string="Professionals">
@@ -105,7 +105,7 @@
         <field name="name">Doctor</field>
         <field name="model">res.partner</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="0">
                 <field name="name"/>
                 <field name="languages" widget="many2many_tags"/>
                 <field name="speciality_ids" widget="many2many_tags"/>

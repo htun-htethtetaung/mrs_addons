@@ -3,6 +3,7 @@
     <menuitem name="MRS" id="mrs_mrs_module_main_menu" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
         <menuitem name="Medical History" id="mrs_history_sub_menu" sequence="10">
             <menuitem name="Patients" id="mrs_patient_sub_menu" sequence="10" action="mrs_patient_action"></menuitem>
+            <menuitem name="Doctors" id="mrs_doctor_sub_menu" sequence="15" action="mrs_doctor_action"></menuitem>
             <menuitem name="Visits" id="mrs_visit_sub_menu" sequence="20" action="mrs_visit_action"></menuitem>
         </menuitem>
         <menuitem name="Configurations" id="mrs_configuration_sub_menu" sequence="20">
