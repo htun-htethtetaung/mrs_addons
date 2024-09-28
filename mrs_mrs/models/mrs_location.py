@@ -9,3 +9,9 @@ class MrsLocation(models.Model):
     name = fields.Char()
     code = fields.Char()
     address = fields.Text()
+
+
+class Doctor(models.Model):
+    _inherit = "res.partner"
+
+    default_mrs_location_id = fields.Many2one(comodel_name="mrs.location")

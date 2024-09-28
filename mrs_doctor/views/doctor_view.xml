@@ -2,10 +2,11 @@
 <odoo>
     <record id="view_mrs_doctor_form" model="ir.ui.view">
         <field name="name">Doctor</field>
-        <field name="model">res.partner</field>
+        <field name="model">res.users</field>
         <field name="arch" type="xml">
-            <form create="0">
+            <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box"/>
                     <field name="avatar_128" invisible="1"/>
                     <field name="city" invisible="1"/>
                     <field name="comment" invisible="1"/>
@@ -25,6 +26,11 @@
                         <field id="individual" options="{'line_breaks': False}" widget="text" class="text-break" name="name" default_focus="1" placeholder="e.g. Brandom Freeman"/>
                     </h1>
                     <group>
+                        <group>
+                            <field name="login" />
+                        </group>
+                        <group>
+                        </group>
                         <group string="Address">
                             <span class="o_form_label o_td_label" name="address_name">
                                 <field name="type" invisible="is_company" readonly="user_ids" required="not is_company" class="fw-bold"/>
@@ -57,18 +63,22 @@
                         </group>
                     </group>
                     <notebook>
-                        <page name="professionals" string="Professional Info">
+                        <page name="speciality" string="Specialities">
                             <group>
                                 <group>
-                                    <field name="languages" widget="many2many_tags" />
-                                    <field name="speciality_ids" widget="many2many_tags" />
+                                    <field name="languages" widget="many2many_tags"/>
+                                    <field name="speciality_ids" widget="many2many_tags" placeholder="Specialities"/>
                                     <field name="sub_speciality" />
                                 </group>
                                 <group>
                                     <field name="reg_country" required="True" />
                                     <field name="expretise" />
                                 </group>
-                                <field name="professional_ids" nolabel="1" colspan="1" context="{'default_partner_id': id}">
+                            </group>
+                        </page>
+                        <page id="professional_and_academic" string="Professionals &amp; Academics">
+                            <group string="Professionals">
+                                <field name="professional_ids" nolabel="1" colspan="2" context="{'default_partner_id': id}">
                                     <tree string="Professionals">
                                         <field name="name"/>
                                         <field name="position"/>
@@ -77,6 +87,8 @@
                                         <field name="current"/>
                                     </tree>
                                 </field>
+                            </group>
+                            <group string="Academics">
                                 <field name="academic_ids" nolabel="1" colspan="2" context="{'default_partner_id': id}">
                                     <tree string="Academic Info">
                                         <field name="name"/>
@@ -103,9 +115,9 @@
     </record>
     <record id="view_mrs_doctor_list" model="ir.ui.view">
         <field name="name">Doctor</field>
-        <field name="model">res.partner</field>
+        <field name="model">res.users</field>
         <field name="arch" type="xml">
-            <tree create="0">
+            <tree>
                 <field name="name"/>
                 <field name="languages" widget="many2many_tags"/>
                 <field name="speciality_ids" widget="many2many_tags"/>
@@ -113,4 +125,22 @@
             </tree>
         </field>
     </record>
+
+    <record id="mrs_doctor_action" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="res_model">res.users</field>
+        <field name="domain">[('partner_id', '!=', False)]</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'tree', 'view_id': ref('mrs_doctor.view_mrs_doctor_list')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('mrs_doctor.view_mrs_doctor_form')})]"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Add a new Doctor
+            </p><p>
+            Create Doctor
+            </p>
+        </field>
+    </record>
+
 </odoo>

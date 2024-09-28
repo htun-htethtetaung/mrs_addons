@@ -11,7 +11,7 @@
     "maintainer": "lwinmaungmaung@cosmosmm.com",
     "support": "lwinmaungmaung@cosmosmm.com",
     "license": "LGPL-3",
-    "depends": ["base", "mail"],
+    "depends": ["base", "mail", "contacts"],
     "demo": [],
     "data": [
         "security/ir.model.access.csv",

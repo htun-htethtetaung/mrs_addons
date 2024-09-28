@@ -1,6 +1,6 @@
 #!/bin/bash
 # Black Formatter
-echo "ODOO_DIR=${ODOO_DIR:-../odoo}"
+echo "ODOO_DIR=${ODOO_DIR:-../odoo17}"
 echo "ADDON_DIR=${ADDON_DIR:-$(pwd)}"
 
 echo "Black Formatter is running"
@@ -15,5 +15,5 @@ echo "Done..."
 
 # Pylint Linter
 echo "Pylint Linter is running"
-pylint --rcfile=.pylintrc --init-hook="import sys; sys.path.append('${ODOO_DIR:-../odoo}')" ${ADDON_DIR:-$(pwd)}
+pylint --rcfile=.pylintrc --init-hook="import sys; sys.path.append('${ODOO_DIR}')" ${ADDON_DIR}
 echo "Done..."
