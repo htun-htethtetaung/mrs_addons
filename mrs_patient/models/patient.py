@@ -59,6 +59,22 @@ class MrsPatient(models.Model):
     insurance_ids = fields.One2many(
         comodel_name="patient.insurance", inverse_name="patient_id"
     )
+    address_string = fields.Text(compute="_compute_address_string")
+
+    @api.depends("street", "street2", "city", "state_id", "country_id", "zip")
+    def _compute_address_string(self):
+        for record in self:
+            address_list = [
+                record.street,
+                record.street2,
+                record.city,
+                record.state_id.name if record.state_id else "",
+                record.country_id.name if record.country_id else "",
+                record.zip,
+            ]
+            record.address_string = ", ".join(
+                address for address in address_list if address
+            )
 
     @api.depends("name", "patient_code")
     def _compute_display_name(self):

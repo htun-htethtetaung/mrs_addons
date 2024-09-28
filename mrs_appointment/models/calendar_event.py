@@ -23,6 +23,7 @@ class CalendarEvent(models.Model):
     patient_id = fields.Many2one(
         comodel_name="res.partner", index=True, domain="[('is_patient', '=', True)]"
     )
+    address_string = fields.Text(related="patient_id.address_string")
     current_visit = fields.Many2one(
         comodel_name="mrs.visit", related="patient_id.current_visit"
     )
