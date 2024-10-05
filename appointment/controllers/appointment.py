@@ -911,6 +911,7 @@ class AppointmentController(http.Controller):
         available_resource_ids=None,
         asked_capacity=1,
         guest_emails_str=None,
+        patient_id=0,
         **kwargs,
     ):
         """
@@ -1013,26 +1014,29 @@ class AppointmentController(http.Controller):
                     ._find_or_create_partners(guest_emails_str)
                 )
 
-        customer = self._get_customer_partner() or request.env[
-            "res.partner"
-        ].sudo().search([("email", "=like", email)], limit=1)
-        if customer:
-            if not customer.mobile:
-                customer.write({"mobile": phone})
-            if not customer.email:
-                customer.write({"email": email})
+        if patient_id:
+            customer = request.env["res.partner"].sudo().browse([int(patient_id)])
         else:
-            customer = customer.create(
-                {
-                    "name": name,
-                    "phone": customer._phone_format(
-                        number=phone, country=self._get_customer_country()
-                    )
-                    or phone,
-                    "email": email,
-                    "lang": request.lang.code,
-                }
-            )
+            customer = self._get_customer_partner() or request.env[
+                "res.partner"
+            ].sudo().search([("email", "=like", email)], limit=1)
+            if customer:
+                if not customer.mobile:
+                    customer.write({"mobile": phone})
+                if not customer.email:
+                    customer.write({"email": email})
+            else:
+                customer = customer.create(
+                    {
+                        "name": name,
+                        "phone": customer._phone_format(
+                            number=phone, country=self._get_customer_country()
+                        )
+                        or phone,
+                        "email": email,
+                        "lang": request.lang.code,
+                    }
+                )
 
         # partner_inputs dictionary structures all answer inputs received on the appointment submission: key is question id, value
         # is answer id (as string) for choice questions, text input for text questions, array of ids for multiple choice questions.
@@ -1226,6 +1230,7 @@ class AppointmentController(http.Controller):
                         date_start,
                         date_end,
                     ),
+                    "patient_id": customer.id if customer.is_patient else False,
                 }
             )
         )

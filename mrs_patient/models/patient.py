@@ -1,3 +1,5 @@
+from typing import Optional
+from dataclasses import dataclass
 from odoo import fields, models, api
 
 
@@ -26,6 +28,14 @@ class PatientInsurance(models.Model):
     provider_id = fields.Many2one(
         comodel_name="insurance.provider", string="Insurance Provider", required=True
     )
+
+
+@dataclass
+class PatientData:
+    id: Optional[int] = 0
+    name: Optional[str] = ""
+    email: Optional[str] = ""
+    phone: Optional[str] = ""
 
 
 class MrsPatient(models.Model):
@@ -109,3 +119,16 @@ class MrsPatient(models.Model):
                     self.env["ir.sequence"].next_by_code("mrs.patient") or "New"
                 )
         return super().create(vals_list)
+
+    # External Function (eg. RPC call)
+    def get_patient_by_code(self, code: str) -> PatientData:
+        if code:
+            patient = self.search([("patient_code", "=", code)], limit=1)
+            if patient:
+                return PatientData(
+                    id=patient.ids[0],
+                    name=patient.name,
+                    email=patient.email,
+                    phone=patient.phone,
+                ).__dict__
+        return PatientData(0, "", "", "").__dict__

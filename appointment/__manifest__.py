@@ -11,7 +11,14 @@
     "description": """
 Allow clients to Schedule Appointments through the Portal
     """,
-    "depends": ["calendar", "onboarding", "portal", "resource", "web_gantt"],
+    "depends": [
+        "calendar",
+        "onboarding",
+        "portal",
+        "resource",
+        "web_gantt",
+        "mrs_patient",
+    ],
     "data": [
         "data/onboarding_data.xml",
         "data/calendar_data.xml",

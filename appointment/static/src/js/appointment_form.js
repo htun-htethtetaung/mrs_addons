@@ -11,8 +11,49 @@ publicWidget.registry.appointmentForm = publicWidget.Widget.extend({
         'click div.o_appointment_add_guests button.o_appointment_input_guest_add': '_onAddGuest',
         'click div.o_appointment_add_guests button.o_appointment_input_guest_cancel': '_onHideGuest',
         'click .o_appointment_form_confirm_btn': '_onConfirmAppointment',
+        'click .custom-check-patient': 'async _onClickCheckPatient',
+        'input #custom-patient-code': 'async _onChangePatientCode',
     },
-
+    init() {
+        this._super(...arguments);
+        this.orm = this.bindService("orm");
+        this.notification = this.bindService("notification");
+    },
+    start(){
+        this.$patient_id = this.$('.custom-patient-id').first()[0];
+        this.$code = this.$('.custom-patient-code').first()[0];
+        this.$name = this.$('.custom-patient-name').first()[0];
+        this.$email = this.$('.custom-patient-email').first()[0];
+        this.$phone = this.$('.custom-patient-phone').first()[0];
+    },
+    _onChangePatientCode: async function(e){
+        this._removePatientData({}, false)
+    },
+    _removePatientData: function({
+        id=0,
+        name='',
+        email='',
+        phone=''
+    }, readOnly){
+        this.$name.readOnly = readOnly;
+        this.$email.readOnly = readOnly;
+        this.$phone.readOnly = readOnly;
+        this.$patient_id.value = id;
+        this.$name.value = name;
+        this.$email.value = email;
+        this.$phone.value = phone;
+    },
+    _onClickCheckPatient: async function(){
+        const res = await this.orm.call('res.partner', 'get_patient_by_code', [null, this.$code.value]);
+        if (!res.id){
+            this._removePatientData({}, false);
+            this.notification.add(`Patient Code ${code.value} not found.`, { type: "danger"});
+            return
+        }
+        this._removePatientData(res, true);
+        const noti = this.notification.add(`Patient Code ${code.value} found.`, { type: "success"});
+        console.log(noti);
+    },
     /**
      * This function will show the guest email textarea where user can enter the
      * emails of the guests if allow_guests option is enabled.

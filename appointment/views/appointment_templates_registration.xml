@@ -23,27 +23,33 @@
                                             <input type="hidden" name="duration_str" t-att-value="duration_str"/>
                                             <input type="hidden" name="available_resource_ids" t-att-value="available_resource_ids"/>
                                             <input type="hidden" name="asked_capacity" t-att-value="asked_capacity"/>
+                                            <input type="hidden" name="patient_id" class="custom-patient-id"/>
+                                            <div class="row mb-4">
+                                                <label class="col-sm-3 col-form-label fw-normal" for="name">Patient Code</label>
+                                                <div class="col-sm-9">
+                                                    <input type="char" id="custom-patient-code" class="form-control custom-patient-code" name="patient_code"
+                                                        placeholder="e.g. P0000001"/>
+                                                    <span class="btn btn-link btn-secondary custom-check-patient">Check</span>
+                                                </div>
+                                            </div>
                                             <div class="row mb-4">
                                                 <label class="col-sm-3 col-form-label fw-normal" for="name">Full name*</label>
                                                 <div class="col-sm-9">
-                                                    <input type="char" class="form-control" name="name" required="1"
-                                                        t-att-value="'name' in partner_data and partner_data['name']"
+                                                    <input type="char" class="form-control custom-patient-name" name="name" required="1"
                                                         placeholder="e.g. John Smith"/>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
                                                 <label class="col-sm-3 col-form-label fw-normal" for="email">Email*</label>
                                                 <div class="col-sm-9">
-                                                    <input type="email" class="form-control" name="email" required="1"
-                                                        t-att-value="'email' in partner_data and partner_data['email']"
+                                                    <input type="email" class="form-control custom-patient-email" name="email" required="1"
                                                         placeholder="e.g. john.smith@example.com"/>
                                                 </div>
                                             </div>
                                             <div class="row mb-4">
                                                 <label class="col-sm-3 col-form-label fw-normal" for="phone">Phone number*</label>
                                                 <div class="col-sm-9">
-                                                    <input type="tel" class="form-control" name="phone" id="phone_field" required="1"
-                                                        t-att-value="'phone' in partner_data and partner_data['phone']"
+                                                    <input type="tel" class="form-control custom-patient-phone" name="phone" id="phone_field" required="1"
                                                         placeholder="e.g. +1(605)691-3277"/>
                                                 </div>
                                             </div>
