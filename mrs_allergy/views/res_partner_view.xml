@@ -16,7 +16,7 @@
                     </div>
                 </button>
             </button>
-            <page name="medical_histories" position="after">
+            <page name="patient_first_page" position="before">
                 <page name="allergy_page" string="Allergies" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group string="Allergies">
                         <field name="allergy_ids"

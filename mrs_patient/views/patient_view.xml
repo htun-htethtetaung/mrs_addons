@@ -83,6 +83,16 @@
                                 </field>
                             </group>
                         </page>
+                        <page name="patient_first_page" invisible="True">
+                        </page>
+                        <page name="patient_second_page" invisible="True">
+                        </page>
+                        <page name="patient_third_page" invisible="True">
+                        </page>
+                        <page name="patient_fourth_page" invisible="True">
+                        </page>
+                        <page name="patient_fifth_page" invisible="True">
+                        </page>
                     </notebook>
                 </sheet>
                 <!-- Attachment preview -->

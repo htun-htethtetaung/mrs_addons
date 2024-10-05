@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
         <field name="arch" type="xml">
             <page id="mrs_visit_first_page" position="after">
-                <page id="mrs_prescription_lines" string="Prescriptions">
+                <page id="mrs_prescription_lines" string="Prescriptions" sequence="40">
                     <group>
                         <field name="prescription_order_ids"
                             widget="section_and_note_one2many"

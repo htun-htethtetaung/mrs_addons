@@ -52,6 +52,8 @@
                         </page>
                         <page id="mrs_visit_second_page" invisible="True">
                         </page>
+                        <page id="mrs_visit_third_page" invisible="True">
+                        </page>
                     </notebook>
                 </sheet>
                 <!-- Attachment preview -->

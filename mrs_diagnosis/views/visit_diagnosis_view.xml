@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
         <field name="arch" type="xml">
             <page id="mrs_visit_first_page" position="before">
-                <page id="mrs_condition_lines" string="Conditions" sequence="10">
+                <page id="mrs_condition_lines" string="Conditions" sequence="20">
                     <group>
                         <field name="condition_ids"
                             widget="section_and_note_one2many"

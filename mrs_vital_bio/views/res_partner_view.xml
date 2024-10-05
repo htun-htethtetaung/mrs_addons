@@ -25,7 +25,7 @@
                     </div>
                 </button>
             </button>
-            <page name="medical_histories" position="after">
+            <page name="patient_third_page" position="before">
                 <page string="Vitals &amp; Bios" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor">
                     <group string="Vital">
                         <field name="vital_ids"

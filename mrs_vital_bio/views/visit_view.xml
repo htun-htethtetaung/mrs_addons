@@ -5,8 +5,8 @@
         <field name="model">mrs.visit</field>
         <field name="inherit_id" ref="mrs_mrs.view_mrs_visit_form" />
         <field name="arch" type="xml">
-            <page id="mrs_visit_second_page" position="before">
-                <page id="mrs_vital_biometric_lines" string="Vitals &amp; Biometrics">
+            <page id="mrs_visit_third_page" position="after">
+                <page id="mrs_vital_biometric_lines" string="Vitals &amp; Biometrics" sequence="60">
                     <group string="Vitals">
                         <field name="vital_ids"
                             widget="section_and_note_one2many"

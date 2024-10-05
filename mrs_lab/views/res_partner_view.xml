@@ -16,7 +16,7 @@
                     </div>
                 </button>
             </button>
-            <page name="medical_histories" position="after">
+            <page name="patient_second_page" position="after">
                 <page name="lab_page" string="Labs" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group string="Labs">
                         <field name="lab_ids"

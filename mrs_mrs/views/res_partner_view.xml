@@ -35,7 +35,7 @@
                     <button name="action_go_to_contact" type="object" string="Contact Info" />
                 </header>
             </xpath>
-            <page name="patient_detail" position="after">
+            <page name="patient_first_page" position="after">
                 <page name="medical_histories" string="Visits" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group>
                         <field 
