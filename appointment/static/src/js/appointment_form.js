@@ -47,12 +47,11 @@ publicWidget.registry.appointmentForm = publicWidget.Widget.extend({
         const res = await this.orm.call('res.partner', 'get_patient_by_code', [null, this.$code.value]);
         if (!res.id){
             this._removePatientData({}, false);
-            this.notification.add(`Patient Code ${code.value} not found.`, { type: "danger"});
+            this.notification.add(`Patient Code ${this.$code.value} not found.`, { type: "danger"});
             return
         }
         this._removePatientData(res, true);
-        const noti = this.notification.add(`Patient Code ${code.value} found.`, { type: "success"});
-        console.log(noti);
+        const noti = this.notification.add(`Patient Code ${this.$code.value} found.`, { type: "success"});
     },
     /**
      * This function will show the guest email textarea where user can enter the
