@@ -10,4 +10,16 @@
             <menuitem name="MRS Locations" id="mrs_location_sub_menu" action="mrs_location_action"></menuitem>
         </menuitem>
     </menuitem>
+    <record model="ir.ui.menu" id="mail.menu_root_discuss">
+        <field name="name">Internal Chat</field>
+    </record>
+    <record model="ir.ui.menu" id="calendar.mail_menu_calendar">
+        <field name="name">My Clinics</field>
+    </record>
+    <record model="ir.ui.menu" id="calendar.calendar_event_menu">
+        <field name="name">Booked Appointments</field>
+    </record>
+    <record model="ir.ui.menu" id="calendar.menu_calendar_configuration">
+        <field name="name">My Clinics</field>
+    </record>
 </odoo>
