@@ -17,6 +17,10 @@
         <field name="inherit_id" ref="mrs_patient.mrs_patient_view_form" />
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
+                <button class="mrs_first_button" invisible="1"></button>
+                <button class="mrs_second_button" invisible="1"></button>
+                <button class="mrs_third_button" invisible="1"></button>
+                <button class="mrs_fourth_button" invisible="1"></button>
                 <button type="object" class="oe_stat_button" icon="fa-medkit" name="action_view_partner_visits"
                     groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"
                     context="{'default_patient_id': id}">
