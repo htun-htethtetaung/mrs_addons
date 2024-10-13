@@ -221,10 +221,10 @@
                             </div>
                             <label for="min_schedule_hours" string="Scheduling"/>
                             <div class="o_appointment_scheduling">
-                                <span>Min <field name="min_schedule_hours" class="oe_inline ms-2 me-1 o_input_5ch" widget="float_time"/> hours before</span><br/>
+                                <span>Min <field name="min_schedule_hours" class="oe_inline ms-2 me-1 o_input_5ch" widget="float_time"/> hours before appointment time</span><br/>
                                 <span class="d-flex flex-nowrap" invisible="category == 'custom'">
                                     <span class="text-nowrap" invisible="start_datetime">
-                                        Max in <field name="max_schedule_days" class="oe_inline ms-1 o_input_5ch"/> days
+                                        Up to <field name="max_schedule_days" class="oe_inline ms-1 o_input_5ch"/> days
                                     </span>
                                     <span class="px-2" invisible="start_datetime or category == 'anytime'">or</span>
                                     <span class="text-nowrap pe-4" invisible="category == 'anytime'">
@@ -234,9 +234,9 @@
                                     </span>
                                 </span>
                             </div>
-                            <label for="min_cancellation_hours" string="Allow Cancelling"/>
+                            <label for="min_cancellation_hours" string="Allow Appointment Cancellation up to"/>
                             <div>
-                                <span>Until <field name="min_cancellation_hours" class="oe_inline ms-2 me-1 o_input_5ch" widget="float_time"/> hours before</span>
+                                <span>Minimun <field name="min_cancellation_hours" class="oe_inline ms-2 me-1 o_input_5ch" widget="float_time"/> hours before appointment time</span>
                             </div>
                         </group>
                         <group name="right_details">

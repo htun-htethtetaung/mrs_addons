@@ -8,6 +8,15 @@
             <field name="staff_user_count" position="before">
                 <field name="is_patient_appointment" />
             </field>
+            <field name="name" position="attributes">
+                <attribute name="string">Clinic Name</attribute>
+            </field>
+            <field name="appointment_duration" position="attributes">
+                <attribute name="string">Appointment Length</attribute>
+            </field>
+            <field name="min_schedule_hours" position="attributes">
+                <attribute name="string">Scheduling Window</attribute>
+            </field>
         </field>
     </record>
 </odoo>

@@ -16,7 +16,7 @@
                         data-hotkey="y"/>
                     <button name="action_end"
                         type="object"
-                        string="END"
+                        string="End the Visit"
                         invisible="state != 'START'"
                         class="oe_highlight"
                         groups="mrs_mrs.mrs_user,mrs_mrs.mrs_manager,mrs_mrs.mrs_administrator,mrs_mrs.mrs_doctor"

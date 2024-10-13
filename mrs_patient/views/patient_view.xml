@@ -69,7 +69,7 @@
                                 </group>
                                 <group>
                                     <field name="occupation"/>
-                                    <field name="habit_ids" widget="many2many_tags"/>
+                                    <field name="habit_ids" widget="many2many_tags" string="Social History"/>
                                     <field name="disability"/>
                                 </group>
                             </group>

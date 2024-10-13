@@ -40,7 +40,7 @@
                 </header>
             </xpath>
             <page name="patient_first_page" position="after">
-                <page name="medical_histories" string="Visits" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
+                <page name="medical_histories" string="Previous Visits" groups="mrs_mrs.mrs_user,mrs_mrs.mrs_doctor">
                     <group>
                         <field 
                             name="visit_ids"

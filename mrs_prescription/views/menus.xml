@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem name="Prescriptions" id="mrs_history_sub_menu" sequence="21" groups="mrs_mrs.mrs_user" parent="mrs_mrs.mrs_history_sub_menu" action="mrs_prescription_order_for_user_action" />
+    <menuitem name="All Patient Prescriptions" id="mrs_history_sub_menu" sequence="21" groups="mrs_mrs.mrs_user" parent="mrs_mrs.mrs_history_sub_menu" action="mrs_prescription_order_for_user_action" />
 </odoo>
