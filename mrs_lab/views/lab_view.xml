@@ -44,7 +44,7 @@
         <field name="name">Prescription Lab</field>
         <field name="model">mrs.lab</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree create="False">
                 <field name="patient_id" />
                 <field name="visit_id" />
                 <field name="test_type_id" />

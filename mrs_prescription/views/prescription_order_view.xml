@@ -55,7 +55,7 @@
         <field name="name">Prescription Order</field>
         <field name="model">mrs.prescription.order</field>
         <field name="arch" type="xml">
-            <tree duplicate="0">
+            <tree duplicate="0" create="False">
                 <field name="patient_id" />
                 <field name="visit_id" />
                 <field name="start_date" />
