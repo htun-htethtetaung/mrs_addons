@@ -23,10 +23,41 @@
                             </tree>
                         </field>
                     </group>
+                    <group string="Vitals History">
+                        <field name="vital_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree editable="bottom">
+                                <field name="recorded_date" />
+                                <field name="temperature" />
+                                <field name="blood_pressure" />
+                                <field name="pulse" />
+                                <field name="respiration_rate" />
+                                <field name="spo_two" />
+                            </tree>
+                        </field>
+                    </group>
                     <group string="Biometrics">
                         <field name="biometric_ids"
                             widget="section_and_note_one2many"
                             readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree editable="bottom">
+                                <field name="recorded_date" />
+                                <field name="weight" />
+                                <field name="height" />
+                                <field name="bmi" />
+                                <field name="muac" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Biometric History">
+                        <field name="bio_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
                             nolabel="1" colspan="2"
                             mode="tree">
                             <tree editable="bottom">

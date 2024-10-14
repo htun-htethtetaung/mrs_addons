@@ -10,7 +10,21 @@
                     <group>
                         <field name="lab_ids"
                             widget="section_and_note_one2many"
-                            readonly="state=='ENDED'"
+                            nolabel="1" colspan="2"
+                            readonly="state == 'ENDED'"
+                            mode="tree">
+                            <tree>
+                                <field name="test_type_id" />
+                                <field name="lab_ref_no" />
+                                <field name="priority" />
+                                <field name="note" />
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Lab History">
+                        <field name="lab_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
                             nolabel="1" colspan="2"
                             mode="tree">
                             <tree>

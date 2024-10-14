@@ -7,7 +7,8 @@
             <form duplicate="0">
                 <sheet>
                     <h1>
-                        <field name="product_id" placeholder="Drug or Medicine" />
+                        <field name="is_dose_free_text" invisible="True" />
+                        <field name="product_id" placeholder="Drug or Medicine" required="not is_dose_free_text"/>
                     </h1>
                     <group>
                         <group string="Instructions">

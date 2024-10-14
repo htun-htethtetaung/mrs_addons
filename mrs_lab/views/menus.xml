@@ -2,4 +2,5 @@
 <odoo>
     <menuitem name="Lab Test Type" id="mrs_lab_test_type_sub_menu" parent="mrs_mrs.mrs_configuration_sub_menu" action="mrs_lab_test_type_action">
     </menuitem>
+    <menuitem name="All Patient Lab Tests" id="mrs_history_lab_test_sub_menu" sequence="25" groups="mrs_mrs.mrs_user" parent="mrs_mrs.mrs_history_sub_menu" action="mrs_lab_action" />
 </odoo>

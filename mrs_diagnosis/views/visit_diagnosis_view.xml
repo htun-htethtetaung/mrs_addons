@@ -21,6 +21,20 @@
                             </tree>
                         </field>
                     </group>
+                    <group string="Condition History">
+                        <field name="condition_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree>
+                                <field name="diagnosis_id" />
+                                <field name="start_date" />
+                                <field name="state" />
+                                <field name="active" />
+                            </tree>
+                        </field>
+                    </group>
                 </page>
             </page>
         </field>

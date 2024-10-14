@@ -22,6 +22,21 @@
                             </tree>
                         </field>
                     </group>
+                    <group string="Immunization History">
+                        <field name="immunization_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree>
+                                <field name="immunization_id" />
+                                <field name="dose_number" />
+                                <field name="manufacturer" />
+                                <field name="vaccination_date" />
+                                <field name="expire_date" />
+                            </tree>
+                        </field>
+                    </group>
                 </page>
             </page>
         </field>

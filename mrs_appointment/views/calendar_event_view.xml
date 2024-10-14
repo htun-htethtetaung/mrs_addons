@@ -23,7 +23,7 @@
                 <attribute name="create">false</attribute>
             </form>
             <field name="current_status" position="before">
-                <field name="patient_id" context="{'form_view_ref': 'mrs_patient.mrs_patient_view_form'}" readonly="state == 'CONFIRM'" />
+                <field name="patient_id" readonly="state == 'CONFIRM'" />
                 <field name="address_string" />
                 <field name="current_visit" invisible="True" />
             </field>

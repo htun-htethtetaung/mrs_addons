@@ -1,4 +1,5 @@
 from odoo import models, fields
+from .visit import VisitStatus
 
 
 class VisitLine(models.AbstractModel):
@@ -7,6 +8,9 @@ class VisitLine(models.AbstractModel):
     _description = "Abstract Model For All Visit Lines"
 
     visit_id = fields.Many2one(comodel_name="mrs.visit", index=True)
+    visit_state = fields.Selection(
+        related="visit_id.state", selection=list(VisitStatus.name_value())
+    )
     patient_id = fields.Many2one(
         comodel_name="res.partner",
         index=True,

@@ -1405,7 +1405,7 @@ class AppointmentType(models.Model):
                     staff_user.name
                     if self.schedule_based_on == "users"
                     else self.create_uid.name
-                )
+                ),
             ),
             "partner_ids": [Command.link(pid) for pid in (partners | guests).ids],
             "start": fields.Datetime.to_string(start),

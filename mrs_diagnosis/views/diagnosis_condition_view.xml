@@ -8,7 +8,7 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="diagnosis_id" />
+                            <field name="diagnosis_id" required="True" />
                             <field name="state" />
                             <field name="active" />
                         </group>

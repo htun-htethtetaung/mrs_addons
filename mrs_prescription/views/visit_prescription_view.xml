@@ -24,6 +24,23 @@
                             </tree>
                         </field>
                     </group>
+                    <group string="Prescription History">
+                        <field name="prescription_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree>
+                                <field name="product_id" />
+                                <field name="quantity" />
+                                <field name="uom_id" />
+                                <field name="dose_free_text" />
+                                <field name="frequency_qty" />
+                                <button name="unknown" string="Per" disabled="1"/>
+                                <field name="frequency_uom_id" />
+                            </tree>
+                        </field>
+                    </group>
                 </page>
             </page>
         </field>

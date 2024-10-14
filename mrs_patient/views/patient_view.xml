@@ -3,7 +3,7 @@
     <record id="mrs_patient_view_form" model="ir.ui.view">
         <field name="name">mrs.patient.view.form</field>
         <field name="model">res.partner</field>
-        <field name="priority" eval="10" />
+        <field name="priority" eval="1" />
         <field name="arch" type="xml">
             <form>
                 <sheet>

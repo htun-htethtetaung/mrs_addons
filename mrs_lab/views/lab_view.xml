@@ -8,13 +8,13 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="test_type_id" />
-                            <field name="lab_ref_no" />
-
+                            <field name="visit_state" />
+                            <field name="test_type_id" attr="" readonly="visit_state == 'ENDED'" />
+                            <field name="lab_ref_no" readonly="visit_state == 'ENDED'" />
                         </group>
                         <group>
-                            <field name="priority" />
-                            <field name="note" />
+                            <field name="priority" readonly="visit_state == 'ENDED'" />
+                            <field name="note" readonly="visit_state == 'ENDED'" />
                         </group>
                     </group>
                     <notebook id="mrs_lab_notebook">
@@ -24,6 +24,7 @@
                                 <field name="os_attachment_ids"
                                     widget="section_and_note_one2many"
                                     context="{'default_res_model': res_model}"
+                                    readonly="False"
                                     mode="tree">
                                     <tree>
                                         <field name="name" />
@@ -44,6 +45,8 @@
         <field name="model">mrs.lab</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="patient_id" />
+                <field name="visit_id" />
                 <field name="test_type_id" />
                 <field name="lab_ref_no" />
                 <field name="priority" />

@@ -112,7 +112,8 @@ class Visit(models.Model):
             [
                 ("patient_id", "=", patient_id),
                 ("state", "in", (VisitStatus.START.name, VisitStatus.DRAFT.name)),
-            ]
+            ],
+            limit=1,
         )
         return record[0] if record else False
 

@@ -21,6 +21,20 @@
                             </tree>
                         </field>
                     </group>
+                    <group string="Program History">
+                        <field name="program_history"
+                            widget="section_and_note_one2many"
+                            readonly="True"
+                            nolabel="1" colspan="2"
+                            mode="tree">
+                            <tree editable="bottom">
+                                <field name="program_id" />
+                                <field name="date_start" />
+                                <field name="date_end" />
+                                <field name="mrs_location_id" />
+                            </tree>
+                        </field>
+                    </group>
                 </page>
             </page>
         </field>
